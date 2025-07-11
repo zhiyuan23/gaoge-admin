@@ -7,19 +7,32 @@ export const lightTheme = {
   '--card-foreground': '240 10% 3.9%',
   '--popover': '0 0% 100%',
   '--popover-foreground': '240 10% 3.9%',
-  '--primary': '240 5.9% 10%',
-  '--primary-foreground': '0 0% 98%',
+  // '--primary': '240 5.9% 10%', // 黑色主题
+  // '--primary-foreground': '0 0% 98%', // 黑色主题
+  '--primary': '210 100% 62.5%', // 主蓝色
+  '--primary-foreground': '0 0% 100%', // 白色文字
   '--secondary': '240 4.8% 95.9%',
   '--secondary-foreground': '240 5.9% 10%',
   '--muted': '240 4.8% 95.9%',
   '--muted-foreground': '240 3.8% 46.1%',
   '--accent': '240 4.8% 95.9%',
   '--accent-foreground': '240 5.9% 10%',
+  // 文字
+  '--text-primary': '0 0% 20%',
+  '--text-primary-foreground': '0 0% 100%',
+  '--text-secondary': '0 0% 40%',
+  '--text-secondary-foreground': '0 0% 100%',
+  '--text-muted': '0 0% 60%',
+  '--text-muted-foreground': '0 0% 100%',
+  // 背景
+  '--header-bg': '210 9% 96.5%',
+
   '--destructive': '0 84.2% 60.2%',
   '--destructive-foreground': '0 0% 98%',
   '--border': '240 5.9% 90%',
   '--input': '240 5.9% 90%',
   '--ring': '240 5.9% 10%',
+
   // 主要区域
   '--g-main-area-bg': 'hsl(0 0% 95%)',
   // 头部
@@ -65,13 +78,25 @@ export const darkTheme = {
   '--card-foreground': '0 0% 98%',
   '--popover': '240 10% 3.9%',
   '--popover-foreground': '0 0% 98%',
-  '--primary': '0 0% 98%',
-  '--primary-foreground': '240 5.9% 10%',
+  // '--primary': '0 0% 98%', // 黑色主题
+  // '--primary-foreground': '240 5.9% 10%', // 黑色主题
+  '--primary': '210 50% 50%',
+  '--primary-foreground': '0 0% 98%',
   '--secondary': '240 3.7% 15.9%',
   '--secondary-foreground': '0 0% 98%',
   '--muted': '240 3.7% 15.9%',
   '--muted-foreground': '240 5% 64.9%',
   '--accent': '240 3.7% 15.9%',
+  // 文字
+  '--text-primary': '0 0% 90%',
+  '--text-primary-foreground': '0 0% 10%',
+  '-text-secondary': '0 0% 67%',
+  '-text-secondary-foreground': '0 0% 10%',
+  '--text-muted': '0 0% 80%',
+  '--text-muted-foreground': '0 0% 10%',
+  // 背景
+  '--header-bg': '0 0% 10.2%',
+
   '--accent-foreground': '0 0% 98%',
   '--destructive': '0 62.8% 30.6%',
   '--destructive-foreground': '0 0% 98%',

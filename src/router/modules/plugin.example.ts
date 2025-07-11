@@ -149,15 +149,6 @@ const routes: RouteRecordRaw = {
       },
     },
     {
-      path: 'file-preview',
-      name: 'pluginExampleFilePreview',
-      component: () => import('@/views/plugin_example/file-preview.vue'),
-      meta: {
-        title: '文件预览',
-        icon: 'i-mdi:file-eye-outline',
-      },
-    },
-    {
       path: 'cropper',
       name: 'pluginExampleCropper',
       component: () => import('@/views/plugin_example/cropper.vue'),

@@ -1,0 +1,15 @@
+export const DATA_TYPE_OPTIONS = [
+  { label: '兽药生产企业数据', code: 'syscqyinfo', placeholder: '请输入企业名称/许可证号/GMP证书号查询' },
+  { label: '兽药产品批准文号数据', code: 'sycppzwh', placeholder: '请输入企业名称/通用名/商品名/批准文号查询' },
+  { label: '进口兽用生物制品批签发数据', code: 'jksyby', placeholder: '请输入代理机构/生产企业/产品/注册证书号/生产批号查询' },
+  { label: '国产兽用生物制品批签发数据', code: 'syswzppqfgl', placeholder: '请输入生产企业/产品/生产批号查询' },
+  { label: '化药监督抽检结果数据', code: 'hyjdcjjg', placeholder: '请输入批准文号/标称生产企业查询' },
+  { label: '生药监督抽检结果数据', code: 'syjdcjjg', placeholder: '请输入批准文号/标称生产企业查询' },
+  { label: '临床试验审批数据', code: 'lcsysp', placeholder: '请输入批件号/项目名称/申请单位名称查询' },
+  { label: '国内新兽药注册数据', code: 'gnxsyzc', placeholder: '请输入新兽药名称/注册证书号查询' },
+  { label: '进口兽药注册数据', code: 'jksyzc', placeholder: '请输入兽药名称/生产企业名称/生产厂名称/证书号查询' },
+  { label: '国内兽药说明书数据', code: 'gnsybqsms', placeholder: '请输入通用名查询' },
+  { label: '进口兽药说明书数据', code: 'jksybqsms', placeholder: '请输入通用名查询' },
+  { label: '兽药国家标准数据', code: 'sygjbz', placeholder: '请输入标准名称查询' },
+  { label: '兽用抗菌药使用减量化达标养', code: 'companyIntegrityRecord', placeholder: '请输入养殖场名称查询' },
+]

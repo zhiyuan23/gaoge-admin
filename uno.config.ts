@@ -80,6 +80,18 @@ export default defineConfig<Theme>({
         DEFAULT: 'hsl(var(--destructive))',
         foreground: 'hsl(var(--destructive-foreground))',
       },
+      textPrimary: {
+        DEFAULT: 'hsl(var(--text-primary))',
+        foreground: 'hsl(var(--text-primary-foreground))',
+      },
+      textSecondary: {
+        DEFAULT: 'hsl(var(--text-secondary))',
+        foreground: 'hsl(var(--text-secondary-foreground))',
+      },
+      header: {
+        DEFAULT: 'hsl(var(--header-bg))',
+        foreground: 'hsl(var(--header-bg))',
+      },
       muted: {
         DEFAULT: 'hsl(var(--muted))',
         foreground: 'hsl(var(--muted-foreground))',

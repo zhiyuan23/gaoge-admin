@@ -1,0 +1,80 @@
+<route lang="yaml">
+  meta:
+  title: 基础数据详情
+</route>
+
+<script lang="ts" setup>
+import BasicHeader from '@/components/Basic/BasicHeader.vue'
+import useBasicDataStore from '@/store/modules/basic-data'
+
+const basicDataStore = useBasicDataStore()
+const { detailData } = storeToRefs(basicDataStore)
+
+onMounted(() => {
+  basicDataStore.fetchDetailData()
+})
+</script>
+
+<template>
+  <BasicHeader />
+  <div class="px-35 pb-10">
+    <el-descriptions
+      :title="detailData.qymc"
+      direction="vertical"
+      size="large"
+      border
+      class="mt-5"
+    >
+      <el-descriptions-item label="生产许可证">
+        <div class="leading-10">
+          <div>
+            企业名称：{{ detailData.qymc }}
+          </div>
+          <div>
+            许可证号：{{ detailData.xkzh }}
+          </div>
+          <div>
+            生产范围：{{ detailData.scfw }}
+          </div>
+          <div>
+            生产地址：{{ detailData.scdz }}
+          </div>
+          <div>
+            发证日期：{{ detailData.fzrq }}
+          </div>
+          <div>
+            有效期至：{{ detailData.yxqz }}
+          </div>
+        </div>
+      </el-descriptions-item>
+    </el-descriptions>
+    <el-descriptions
+      direction="vertical"
+      border
+      class="mt-5"
+    >
+      <el-descriptions-item :label="detailData.gmpZsh">
+        <div class="leading-10">
+          <div>
+            企业名称：{{ detailData.gmpQymc }}
+          </div>
+          <div>
+            生产地址：{{ detailData.gmpScdz }}
+          </div>
+          <div>
+            GMP证书号：{{ detailData.gmpZsh }}
+          </div>
+          <div>
+            生产范围：{{ detailData.gmpYsfw }}
+          </div>
+          <div>
+            发证日期：{{ detailData.gmpGgrq }}
+          </div>
+          <div>
+            失效日期：{{ detailData.gmpSxrq }}
+          </div>
+        </div>
+      </el-descriptions-item>
+    </el-descriptions>
+  </div>
+</template>

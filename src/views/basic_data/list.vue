@@ -1,0 +1,107 @@
+<route lang="yaml">
+  meta:
+  title: 基础数据列表
+</route>
+
+<script lang="ts" setup>
+// import BasicFooter from '@/components/Basic/BasicFooter.vue'
+import BasicHeader from '@/components/Basic/BasicHeader.vue'
+import Table from '@/components/Table/index.vue'
+import useBasicDataStore from '@/store/modules/basic-data'
+import AdvancedSearch from './components/AdvancedSearch.vue'
+import SearchBox from './components/SearchBox.vue'
+
+const router = useRouter()
+const basicDataStore = useBasicDataStore()
+
+const { tablePage, tablePageSize, tableColumns, tableRecords, totalRecords } = storeToRefs(basicDataStore)
+
+const columns = computed(() => [
+  ...tableColumns.value,
+  // {
+  //   label: '操作',
+  //   slot: 'action',
+  //   fixed: 'right',
+  //   width: 100,
+  //   align: 'center',
+  // },
+])
+const showAdvanced = ref<boolean>(false)
+
+const advancedSearchRef = ref()
+
+// 初始化搜索条件
+function resetList() {
+  advancedSearchRef.value?.resetForm()
+  basicDataStore.updateQueryParams({ conditions: [] })
+  getList()
+}
+
+// 高级搜索确认
+function onConfirm(conditions: any) {
+  basicDataStore.updateQueryParams({ conditions })
+  getList()
+}
+
+// 切换分页
+function paginationChange({ page, pageSize }: any) {
+  basicDataStore.updateQueryParams({ page, pageSize })
+  getList()
+}
+
+// 获取列表
+function getList() {
+  basicDataStore.fetchTableColumns()
+  basicDataStore.fetchTableRecords()
+}
+
+// 查看详情
+function toDetail(row: any) {
+  router.push({
+    path: '/basic_data/detail',
+    query: {
+      id: row.id,
+    },
+  })
+}
+
+onMounted(() => {
+  getList()
+})
+</script>
+
+<template>
+  <BasicHeader />
+  <SearchBox
+    class="mt-8"
+    show-advanced
+    @open-advanced="showAdvanced = true"
+    @confirm="resetList"
+  />
+  <div class="h-[calc(100vh-210px)] w-full flex-col px-15 py-7">
+    <Table
+      :columns="columns"
+      :data="tableRecords"
+      :total="totalRecords"
+      show-index
+      :page="tablePage"
+      :page-size="tablePageSize"
+      :page-sizes="[10, 15, 20, 25, 50]"
+      @pagination-change="paginationChange"
+    >
+      <template #action="{ row }">
+        <el-button type="primary" @click="toDetail(row)">
+          查看
+        </el-button>
+      </template>
+    </Table>
+  </div>
+  <!-- <BasicFooter :height-auto="currentPageSize > 10" /> -->
+
+  <!-- 高级搜索 -->
+  <AdvancedSearch
+    ref="advancedSearchRef"
+    v-model="showAdvanced"
+    @confirm="onConfirm"
+  />
+</template>

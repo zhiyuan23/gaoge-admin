@@ -67,6 +67,7 @@ declare global {
   const unref: typeof import('vue')['unref']
   const useAttrs: typeof import('vue')['useAttrs']
   const useAuth: typeof import('../utils/composables/useAuth')['default']
+  const useConditionConverter: typeof import('../utils/composables/useConditionConverter')['useConditionConverter']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
   const useGlobalProperties: typeof import('../utils/composables/useGlobalProperties')['default']

@@ -3,6 +3,7 @@ import type { RouteRecordRaw } from 'vue-router'
 import useSettingsStore from '@/store/modules/settings'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:meta-layouts'
+import BasicData from './modules/basic.data'
 import BreadcrumbExample from './modules/breadcrumb.example'
 import ComponentExample from './modules/component.example'
 import EcologyExample from './modules/ecology.example'
@@ -77,6 +78,7 @@ const asyncRoutes: Route.recordMainRaw[] = [
       icon: 'i-uim:box',
     },
     children: [
+      BasicData,
       MultilevelMenuExample,
       BreadcrumbExample,
       KeepAliveExample,

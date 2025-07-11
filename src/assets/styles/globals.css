@@ -1,7 +1,7 @@
 /* 页面布局 CSS 变量 */
 :root {
   /* 头部高度 */
-  --g-header-height: 60px;
+  --g-header-height: 55px;
 
   /* 侧边栏宽度 */
   --g-main-sidebar-width: 80px;
@@ -12,10 +12,10 @@
   --g-sidebar-logo-height: 50px;
 
   /* 标签栏高度 */
-  --g-tabbar-height: 50px;
+  --g-tabbar-height: 45px;
 
   /* 工具栏高度 */
-  --g-toolbar-height: 50px;
+  --g-toolbar-height: 45px;
 }
 
 /* 明暗模式 CSS 变量 */
