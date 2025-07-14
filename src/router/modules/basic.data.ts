@@ -5,10 +5,10 @@ const routes: RouteRecordRaw = {
   redirect: '/basic_data/index',
   name: 'basicData',
   meta: {
-    title: '基础数据管理',
+    title: '基础数据',
     hidden: true,
     cacheable: true,
-    icon: 'i-ep:document',
+    icon: 'i-majesticons:data-line',
   },
   children: [
     {
@@ -16,7 +16,7 @@ const routes: RouteRecordRaw = {
       name: 'basicDataIndex',
       component: () => import('@/views/basic_data/index.vue'),
       meta: {
-        title: '基础数据',
+        title: '查询首页',
         hidden: true,
         breadcrumb: true,
       },

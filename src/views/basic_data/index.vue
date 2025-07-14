@@ -11,6 +11,14 @@ import useBasicDataStore from '@/store/modules/basic-data'
 import { Download, Phone, Upload } from '@element-plus/icons-vue'
 import SearchBox from './components/SearchBox.vue'
 
+const props = defineProps({
+  // 展示高级搜索
+  showFooter: {
+    type: Boolean,
+    default: true,
+  },
+})
+
 const router = useRouter()
 const basicDataStore = useBasicDataStore()
 
@@ -87,8 +95,10 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <Copyright color="white" />
-    <BasicFooter color="white" />
+    <template v-if="props.showFooter">
+      <Copyright color="white" />
+      <BasicFooter color="white" />
+    </template>
 
     <el-dialog v-model="showModal" width="1000" title="支持电话">
       <Table

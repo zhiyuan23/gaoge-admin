@@ -5,6 +5,7 @@
   },
   "scripts": {
     "dev": "vite",
+    "build": "vue-tsc -b && vite build --mode production",
     "build:example": "vue-tsc -b && vite build --mode example",
     "serve:example": "http-server ./dist-example -o",
     "svgo": "svgo -f src/assets/icons",

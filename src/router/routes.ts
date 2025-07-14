@@ -74,11 +74,19 @@ const systemRoutes: RouteRecordRaw[] = [
 const asyncRoutes: Route.recordMainRaw[] = [
   {
     meta: {
+      title: '国家兽药',
+      icon: 'i-ci:main-component',
+    },
+    children: [
+      BasicData,
+    ],
+  },
+  {
+    meta: {
       title: '演示',
       icon: 'i-uim:box',
     },
     children: [
-      BasicData,
       MultilevelMenuExample,
       BreadcrumbExample,
       KeepAliveExample,
