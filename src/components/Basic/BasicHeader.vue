@@ -20,7 +20,7 @@ const to = computed(() => {
     <RouterLink :to="to" class="h-full flex-center-start cursor-pointer">
       <!-- 图文标题 -->
       <template v-if="props.type === 'IMAGE_TEXT'">
-        <img class="mr-3 w-13" src="@/assets/images/icon_logo.png">
+        <img class="mr-3 w-13" src="@/assets/images/logo.png">
         <div class="text-2xl text-white">
           国家兽药基础数据库
         </div>

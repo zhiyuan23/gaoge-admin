@@ -72,7 +72,7 @@ const props = defineProps({
   // 表格尺寸
   tableSize: {
     type: String as () => TableSize,
-    default: 'default' as TableSize,
+    default: '' as TableSize,
     validator: (value: string): value is TableSize => {
       return ['', 'default', 'small', 'large'].includes(value)
     },
@@ -159,7 +159,7 @@ function emitPaginationChange() {
       :size="tableSize"
       stripe
       class="w-full"
-      :class="tableSize === 'default' ? 'table-wrap' : ''"
+      :class="tableSize ? '' : 'table-wrap'"
       v-bind="$attrs"
       color="text-primary"
     >
@@ -201,7 +201,7 @@ function emitPaginationChange() {
   color: text-primary;
 }
 
-.table-wrap :deep(.el-table .el-table__cell) {
-  padding: 7px 0;
+:deep(.el-table-fixed-column--right) {
+  padding: 0;
 }
 </style>

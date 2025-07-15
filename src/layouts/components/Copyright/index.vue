@@ -10,8 +10,8 @@ const settingsStore = useSettingsStore()
 
 <template>
   <footer v-if="settingsStore.settings.copyright.enable" class="copyright">
-    <span>Copyright</span>
-    <FaIcon name="i-ri:copyright-line" class="size-5" />
+    <!-- <span>Copyright</span>
+    <FaIcon name="i-ri:copyright-line" class="size-5" /> -->
     <span v-if="settingsStore.settings.copyright.dates">{{ settingsStore.settings.copyright.dates }}</span>
     <template v-if="settingsStore.settings.copyright.company">
       <a v-if="settingsStore.settings.copyright.website" :href="settingsStore.settings.copyright.website" target="_blank" rel="noopener">{{ settingsStore.settings.copyright.company }}</a>

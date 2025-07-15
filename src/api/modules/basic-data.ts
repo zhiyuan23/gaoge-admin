@@ -9,9 +9,15 @@ export default {
   }),
 
   // 获取列表
-  getListApi: (path: string, data: object) => api.post(`${BASE_PATH}${path}/list`, data, {
+  // getListApi: (path: string, data: object) => api.post(`${BASE_PATH}${path}/list`, data, {
+  //   noAuth: true,
+  //   rawResponse: true,
+  // }),
+
+  // 获取详情
+  getListApi: (path: string, data: object) => api.post('basic/list', data, {
+    baseURL: '/mock/',
     noAuth: true,
-    rawResponse: true,
   }),
 
   // 获取详情

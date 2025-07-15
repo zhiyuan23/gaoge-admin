@@ -12,10 +12,10 @@
   --g-sidebar-logo-height: 50px;
 
   /* 标签栏高度 */
-  --g-tabbar-height: 45px;
+  --g-tabbar-height: 50px;
 
   /* 工具栏高度 */
-  --g-toolbar-height: 45px;
+  --g-toolbar-height: 50px;
 }
 
 /* 明暗模式 CSS 变量 */

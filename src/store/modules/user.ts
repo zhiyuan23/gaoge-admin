@@ -15,7 +15,7 @@ const useUserStore = defineStore(
     const tabbarStore = useTabbarStore()
 
     const account = ref(localStorage.account ?? '')
-    const token = ref(localStorage.token ?? '')
+    const token = ref(localStorage.token ?? 'tokenAdminTest')
     const avatar = ref(localStorage.avatar ?? '')
     const permissions = ref<string[]>([])
     const isLogin = computed(() => {

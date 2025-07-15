@@ -12,7 +12,7 @@ const globalSettings: Settings.all = {
     enableMobileAdaptation: true,
   },
   menu: {
-    mode: 'head',
+    mode: 'single',
     enableSubMenuCollapseButton: true,
     enableHotkeys: true,
   },
@@ -34,8 +34,8 @@ const globalSettings: Settings.all = {
   },
   copyright: {
     enable: true,
-    dates: '2025-present',
-    company: 'Gaoge-admin',
+    dates: '',
+    company: '国家兽药基础数据库',
     website: '',
   },
 }

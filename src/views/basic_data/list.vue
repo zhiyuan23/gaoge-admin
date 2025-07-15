@@ -18,13 +18,7 @@ const { tablePage, tablePageSize, tableColumns, tableRecords, totalRecords } = s
 
 const columns = computed(() => [
   ...tableColumns.value,
-  // {
-  //   label: '操作',
-  //   slot: 'action',
-  //   fixed: 'right',
-  //   width: 100,
-  //   align: 'center',
-  // },
+  // 其他配置
 ])
 const showAdvanced = ref<boolean>(false)
 
@@ -57,12 +51,15 @@ function getList() {
 
 // 查看详情
 function toDetail(row: any) {
-  router.push({
+  const url = router.resolve({
     path: '/basic_data/detail',
     query: {
       id: row.id,
     },
-  })
+  }).href
+
+  // 新标签页打开
+  window.open(url, '_blank')
 }
 
 onMounted(() => {
@@ -73,12 +70,12 @@ onMounted(() => {
 <template>
   <BasicHeader />
   <SearchBox
-    class="mt-8"
+    class="mt-7"
     show-advanced
     @open-advanced="showAdvanced = true"
     @confirm="resetList"
   />
-  <div class="h-[calc(100vh-210px)] w-full flex-col px-15 py-7">
+  <div class="h-[calc(100vh-208px)] w-full flex-col px-15 py-7">
     <Table
       :columns="columns"
       :data="tableRecords"
@@ -90,7 +87,7 @@ onMounted(() => {
       @pagination-change="paginationChange"
     >
       <template #action="{ row }">
-        <el-button type="primary" @click="toDetail(row)">
+        <el-button type="primary" plain size="small" @click="toDetail(row)">
           查看
         </el-button>
       </template>

@@ -51,7 +51,7 @@ onMounted(() => {
 <template>
   <div class="min-h-full w-full flex-col-center-start bg-[url('@/assets/images/bg_main.png')] bg-cover bg-center">
     <!-- LOGO -->
-    <img src="@/assets/images/logo.png" class="mt-24">
+    <img src="@/assets/images/title_logo.png" class="mt-24">
 
     <!-- 搜索框 -->
     <SearchBox class="mt-24" @confirm="onSearch" />

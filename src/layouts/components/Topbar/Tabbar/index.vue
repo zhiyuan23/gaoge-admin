@@ -42,6 +42,15 @@ watch(() => route, (val) => {
   immediate: true,
   deep: true,
 })
+
+function handleDoubleClick(tabId: string) {
+  if (tabbarStore.list.length > 1) {
+    tabbar.closeById(tabId)
+  }
+  else {
+    toast.warning('当前只有一个标签页，不可关闭')
+  }
+}
 function tabbarScrollTip() {
   if (tabContainerRef.value?.$el.clientWidth > (tabsRef.value?.ref?.$el.clientWidth ?? 0) && localStorage.getItem('tabbarScrollTip') === undefined) {
     localStorage.setItem('tabbarScrollTip', '')
@@ -150,10 +159,16 @@ onUnmounted(() => {
       <FaScrollArea ref="tabsRef" horizontal :scrollbar="false" mask gradient-color="var(--g-tabbar-bg)" class="tabs">
         <TransitionGroup ref="tabContainerRef" name="tabbar" tag="div" class="tab-container">
           <div
-            v-for="(element, index) in tabbarStore.list" :key="element.tabId"
-            ref="tabRef" :data-index="index" class="tab" :class="{
+            v-for="(element, index) in tabbarStore.list"
+            :key="element.tabId"
+            ref="tabRef"
+            :data-index="index"
+            class="tab"
+            :class="{
               actived: element.tabId === activedTabId,
-            }" @click="router.push(element.fullPath)"
+            }"
+            @click="router.push(element.fullPath)"
+            @dblclick="handleDoubleClick(element.tabId)"
           >
             <FaContextMenu :items="contextMenuItems(element)">
               <div class="size-full">
@@ -221,12 +236,15 @@ onUnmounted(() => {
           position: relative;
           display: inline-block;
           width: 150px;
-          height: var(--g-tabbar-height);
+          height: calc(var(--g-tabbar-height) - 10px);
+          margin: 5px 0 5px 4px;
+          overflow: hidden;
           font-size: 14px;
-          line-height: calc(var(--g-tabbar-height) - 2px);
+          line-height: calc(var(--g-tabbar-height) - 12px);
           vertical-align: bottom;
           pointer-events: none;
           cursor: pointer;
+          border-radius: 6px;
 
           &:not(.actived):hover {
             z-index: 3;

@@ -1,4 +1,4 @@
-# 📦 gaoge-admin
+# 📦 国家兽药基础数据库
 
 基于 **Vue 3 + TypeScript + UnoCSS + Pinia** 构建的现代化后台管理系统。
 
@@ -33,7 +33,7 @@
 ## 📁 项目结构（核心）
 
 \```
-gaoge-admin
+国家兽药基础数据库
 ├─ src/                    # 核心源码
 │  ├─ api/                 # 接口封装
 │  ├─ assets/              # 静态资源（图片/图标/样式）
