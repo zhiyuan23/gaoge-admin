@@ -39,7 +39,7 @@ const isProfileShow = ref(false)
               {{ userStore.account }}
             </div>
             <div class="text-xs text-secondary-foreground/50 font-normal">
-              这里可以显示邮箱
+              用户名
             </div>
           </div>
         </div>

@@ -112,11 +112,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
 
     // https://github.com/chengpeiquan/vite-plugin-banner
     banner(`
-/**
- * 由 Fantastic-admin 提供技术支持
- * Powered by Fantastic-admin
- * https://fantastic-admin.hurui.me
- */
+
     `),
 
     {
@@ -170,11 +166,12 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       name: 'vite-plugin-terminal-info',
       apply: 'serve',
       async buildStart() {
-        const { bold, green, cyan, bgGreen, underline } = picocolors
+        const { bold, green, bgGreen } = picocolors
         // eslint-disable-next-line no-console
         console.log(
           boxen(
-            `${bold(green(`由 ${bgGreen('Fantastic-admin')} 驱动`))}\n\n${underline('https://fantastic-admin.hurui.me')}\n\n当前使用：${cyan('基础版')}`,
+            // `${bold(green(`由 ${bgGreen('Fantastic-admin')} 驱动`))}\n\n${underline('https://fantastic-admin.hurui.me')}\n\n当前使用：${cyan('基础版')}`,
+            `${bold(green(`================ ${bgGreen('Gaoge-admin')} ================`))}`,
             {
               padding: 1,
               margin: 1,

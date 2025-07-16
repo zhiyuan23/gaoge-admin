@@ -32,7 +32,7 @@
 
 ## 📁 项目结构（核心）
 
-\```
+```plaintext
 国家兽药基础数据库
 ├─ src/                    # 核心源码
 │  ├─ api/                 # 接口封装
@@ -55,7 +55,6 @@
 ├─ tsconfig*.json          # TypeScript 配置
 ├─ .env.*                  # 不同环境变量
 └─ README.md
-\```
 
 ---
 
