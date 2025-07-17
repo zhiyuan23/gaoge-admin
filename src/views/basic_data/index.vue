@@ -43,6 +43,11 @@ function handleSelect(item: DataTypeOption) {
   dataType.value = item
 }
 
+// 下载帮助文档
+async function downHelpDoc() {
+  basicDataStore.fetchHelpDoc()
+}
+
 onMounted(() => {
   basicDataStore.fetchHelpList()
 })
@@ -60,38 +65,38 @@ onMounted(() => {
     <div class="mb-15 mt-20 rounded-xl bg-background px-6 py-9 shadow-[0_10px_20px_0_rgba(0,50,160,0.35)]">
       <div class="grid grid-cols-3 gap-6">
         <div v-for="item in dataTypeOptions" :key="item.code" class="w-75">
-          <el-link
+          <ElLink
             class="text-left text-4 leading-6"
             :class="item.code === dataType.code ? 'text-primary font-bold' : 'text-textPrimary'"
             @click="handleSelect(item)"
           >
-            <el-icon>
+            <ElIcon>
               <Upload />
-            </el-icon>
+            </ElIcon>
             <div class="pl-2">
               {{ item.label }}
             </div>
-          </el-link>
+          </ElLink>
         </div>
         <div class="w-75">
-          <el-link class="text-left text-4 text-textPrimary leading-6" @click="showModal = true">
-            <el-icon>
+          <ElLink class="text-left text-4 text-textPrimary leading-6" @click="showModal = true">
+            <ElIcon>
               <Phone />
-            </el-icon>
+            </ElIcon>
             <div class="pl-2">
               支持电话
             </div>
-          </el-link>
+          </ElLink>
         </div>
         <div class="w-75">
-          <el-link class="text-left text-4 text-textPrimary leading-6">
-            <el-icon>
+          <ElLink class="text-left text-4 text-textPrimary leading-6" @click="downHelpDoc">
+            <ElIcon>
               <Download />
-            </el-icon>
+            </ElIcon>
             <div class="pl-2">
               帮助文档
             </div>
-          </el-link>
+          </ElLink>
         </div>
       </div>
     </div>
@@ -100,7 +105,7 @@ onMounted(() => {
       <BasicFooter color="white" />
     </template>
 
-    <el-dialog v-model="showModal" width="1000" title="支持电话">
+    <ElDialog v-model="showModal" width="1000" title="支持电话">
       <Table
         :columns="helpColumns"
         :data="helpList"
@@ -108,6 +113,6 @@ onMounted(() => {
         table-size="large"
         :show-pagination="false"
       />
-    </el-dialog>
+    </ElDialog>
   </div>
 </template>

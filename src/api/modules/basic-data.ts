@@ -1,6 +1,7 @@
+import { downloadFile } from '@/utils/downloader'
 import api from '../index'
 
-const BASE_PATH = '/cx/api/cx/h5/'
+const BASE_PATH = '/api/cx/h5'
 
 export default {
   // 获取支持电话
@@ -8,17 +9,25 @@ export default {
     noAuth: true,
   }),
 
-  // 获取列表
-  // getListApi: (path: string, data: object) => api.post(`${BASE_PATH}${path}/list`, data, {
-  //   noAuth: true,
-  //   rawResponse: true,
-  // }),
+  // 文件下载功能
+  getHelpFile: async (params?: any) => {
+    downloadFile(`${BASE_PATH}/help/download`, '帮助文档.doc', {
+      noAuth: true,
+      params,
+    })
+  },
 
-  // 获取详情
-  getListApi: (path: string, data: object) => api.post('basic/list', data, {
-    baseURL: '/mock/',
+  // 获取列表
+  getListApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/list`, data, {
     noAuth: true,
+    rawResponse: true,
   }),
+
+  // 获取列表
+  // getListApi: (path: string, data: object) => api.post('basic/list', data, {
+  //   baseURL: '/mock/',
+  //   noAuth: true,
+  // }),
 
   // 获取详情
   getDetailApi: () => api.get('basic/detail', {

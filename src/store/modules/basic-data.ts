@@ -33,6 +33,11 @@ const useBasicDataStore = defineStore(
       helpList.value = res.data
     }
 
+    // 下载帮助文档
+    async function fetchHelpDoc() {
+      await apiBasicData.getHelpFile()
+    }
+
     // 更新查询条件
     async function updateQueryParams(params: {
       conditions?: any[]
@@ -105,6 +110,7 @@ const useBasicDataStore = defineStore(
       totalRecords,
       detailData,
       fetchHelpList,
+      fetchHelpDoc,
       fetchTableColumns,
       fetchTableRecords,
       fetchDetailData,

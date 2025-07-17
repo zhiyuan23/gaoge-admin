@@ -5,13 +5,13 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'xkzh', label: '许可证号' },
     { prop: 'gmpZsh', label: 'GMP证书' },
     { prop: 'cym', label: '曾用名' },
-    {
-      label: '操作',
-      slot: 'action',
-      width: 100,
-      fixed: 'right' as const,
-      align: 'center' as const,
-    },
+    // {
+    //   label: '操作',
+    //   slot: 'action',
+    //   width: 100,
+    //   fixed: 'right' as const,
+    //   align: 'center' as const,
+    // },
   ],
   // 兽药产品批准文号数据
   sycppzwh: [
