@@ -35,7 +35,7 @@ const globalSettings: Settings.all = {
   copyright: {
     enable: true,
     dates: '',
-    company: '国家兽药基础数据库',
+    company: '中国兽医药品监察所',
     website: '',
   },
 }

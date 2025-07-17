@@ -24,10 +24,11 @@ export default defineConfig(({ mode, command }) => {
       host: true,
       port: 9000,
       proxy: {
-        '/cx/api': {
+        '/api': {
           target: env.VITE_APP_API_BASEURL,
           changeOrigin: command === 'serve' && env.VITE_OPEN_PROXY === 'true',
-          rewrite: path => path.replace(/^\/cx\/api/, '/cx/api'),
+          rewrite: path => path,
+          // rewrite: path => path.replace(/^\/api/, '/api'),
         },
       },
     },

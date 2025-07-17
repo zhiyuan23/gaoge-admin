@@ -15,7 +15,7 @@ const settingsStore = useSettingsStore()
     <span v-if="settingsStore.settings.copyright.dates">{{ settingsStore.settings.copyright.dates }}</span>
     <template v-if="settingsStore.settings.copyright.company">
       <a v-if="settingsStore.settings.copyright.website" :href="settingsStore.settings.copyright.website" target="_blank" rel="noopener">{{ settingsStore.settings.copyright.company }}</a>
-      <span v-else>{{ settingsStore.settings.copyright.company }}</span>
+      <span v-else>版权所有：{{ settingsStore.settings.copyright.company }}</span>
     </template>
     <a v-if="settingsStore.settings.copyright.beian" href="https://beian.miit.gov.cn/" target="_blank" rel="noopener">{{ settingsStore.settings.copyright.beian }}</a>
   </footer>
