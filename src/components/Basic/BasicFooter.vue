@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const props = defineProps({
+  color: {
+    type: String,
+    default: 'text-gray-500',
+  },
   heightAuto: {
     type: Boolean,
     default: false,
@@ -9,9 +13,10 @@ const props = defineProps({
 
 <template>
   <div
-    class="footer-auto fixed bottom-0 w-full pb-12 pt-5 text-center text-gray-500"
+    class="footer-auto fixed bottom-0 w-full pb-12 pt-5 text-center"
     :class="[
       props.heightAuto ? 'static' : '',
+      props.color,
     ]"
   >
     <div class="text-sm leading-8">

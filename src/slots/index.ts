@@ -5,8 +5,7 @@ type Slots =
   'main-sidebar-top' | 'main-sidebar-bottom' | 'main-sidebar-after-logo' |
   'sub-sidebar-top' | 'sub-sidebar-bottom' | 'sub-sidebar-after-logo' |
   'tabbar-start' | 'tabbar-end' |
-  'toolbar-start' | 'toolbar-end' |
-  'free-position'
+  'toolbar-start' | 'toolbar-end'
 
 function tryLoadComponent(name: Slots) {
   const componentMap = import.meta.glob('./*/index.vue', { eager: true })

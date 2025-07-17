@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { useSlots } from '@/slots'
 import useKeepAliveStore from '@/store/modules/keepAlive'
 import useMenuStore from '@/store/modules/menu'
 import useSettingsStore from '@/store/modules/settings'
@@ -154,7 +153,6 @@ const enableAppSetting = import.meta.env.VITE_APP_SETTING
       <AppSetting />
     </template>
     <BackTop />
-    <component :is="useSlots('free-position')" />
   </div>
 </template>
 

@@ -99,8 +99,8 @@ onMounted(() => {
       </div>
     </div>
     <template v-if="props.showFooter">
-      <Copyright color="white" />
-      <BasicFooter color="white" />
+      <Copyright color="text-white" />
+      <BasicFooter color="text-white" />
     </template>
 
     <ElDialog v-model="showModal" width="1000" title="支持电话">
