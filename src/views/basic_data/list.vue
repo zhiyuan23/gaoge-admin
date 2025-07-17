@@ -87,9 +87,9 @@ onMounted(() => {
       @pagination-change="paginationChange"
     >
       <template #action="{ row }">
-        <el-button type="primary" plain size="small" @click="toDetail(row)">
+        <ElButton type="primary" plain size="small" @click="toDetail(row)">
           查看
-        </el-button>
+        </ElButton>
       </template>
     </Table>
   </div>

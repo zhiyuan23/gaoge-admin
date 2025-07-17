@@ -18,14 +18,14 @@ onMounted(() => {
 <template>
   <BasicHeader />
   <div class="px-35 pb-10">
-    <el-descriptions
+    <ElDescriptions
       :title="detailData.qymc"
       direction="vertical"
       size="large"
       border
       class="mt-5"
     >
-      <el-descriptions-item label="生产许可证">
+      <ElDescriptionsItem label="生产许可证">
         <div class="leading-10">
           <div>
             企业名称：{{ detailData.qymc }}
@@ -46,14 +46,14 @@ onMounted(() => {
             有效期至：{{ detailData.yxqz }}
           </div>
         </div>
-      </el-descriptions-item>
-    </el-descriptions>
-    <el-descriptions
+      </ElDescriptionsItem>
+    </ElDescriptions>
+    <ElDescriptions
       direction="vertical"
       border
       class="mt-5"
     >
-      <el-descriptions-item :label="detailData.gmpZsh">
+      <ElDescriptionsItem :label="detailData.gmpZsh">
         <div class="leading-10">
           <div>
             企业名称：{{ detailData.gmpQymc }}
@@ -74,7 +74,7 @@ onMounted(() => {
             失效日期：{{ detailData.gmpSxrq }}
           </div>
         </div>
-      </el-descriptions-item>
-    </el-descriptions>
+      </ElDescriptionsItem>
+    </ElDescriptions>
   </div>
 </template>

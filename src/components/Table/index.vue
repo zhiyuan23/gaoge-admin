@@ -150,7 +150,7 @@ function emitPaginationChange() {
 <template>
   <div class="h-full flex-col">
     <!-- 表格区域 -->
-    <el-table
+    <ElTable
       v-loading="loading"
       :data="data"
       :border="border"
@@ -165,24 +165,24 @@ function emitPaginationChange() {
     >
       <template v-for="col in finalColumns" :key="col.prop">
         <!-- 自定义列插槽 -->
-        <el-table-column v-if="col.slot" v-bind="col">
+        <ElTableColumn v-if="col.slot" v-bind="col">
           <template #default="scope">
             <slot :name="col.slot" v-bind="scope" />
           </template>
-        </el-table-column>
+        </ElTableColumn>
 
         <!-- 普通列 -->
-        <el-table-column
+        <ElTableColumn
           v-else v-bind="col"
           show-overflow-tooltip
           color="text-primary"
         />
       </template>
-    </el-table>
+    </ElTable>
 
     <!-- 分页区域 -->
     <div v-if="showPagination" class="mt-4 flex-center-end">
-      <el-pagination
+      <ElPagination
         v-model:current-page="currentPage"
         v-model:page-size="internalPageSize"
         :layout="paginationLayout"
