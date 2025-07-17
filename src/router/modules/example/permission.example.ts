@@ -17,7 +17,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'index',
       name: 'permissionExampleIndex',
-      component: () => import('@/views/permission_example/index.vue'),
+      component: () => import('@/views/example/permission_example/index.vue'),
       meta: {
         title: '权限验证',
         menu: false,
@@ -28,7 +28,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'test',
       name: 'permissionExampleTest',
-      component: () => import('@/views/permission_example/test.vue'),
+      component: () => import('@/views/example/permission_example/test.vue'),
       meta: {
         title: '测试页面',
         auth: ['permission.browse'],

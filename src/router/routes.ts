@@ -4,21 +4,28 @@ import useSettingsStore from '@/store/modules/settings'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:meta-layouts'
 import BasicData from './modules/basic.data'
-import BreadcrumbExample from './modules/breadcrumb.example'
-import ComponentExample from './modules/component.example'
-import ExternalLinkExample from './modules/external.link.example'
-import FeatureExample from './modules/feature.example'
-import IconExample from './modules/icon.example'
-import JsxExample from './modules/jsx.example'
-import KeepAliveExample from './modules/keep.alive.example'
-import MockExample from './modules/mock.example'
-import MultilevelMenuExample from './modules/multilevel.menu.example'
-import PermissionExample from './modules/permission.example'
-import PluginExample from './modules/plugin.example'
-import TabExample from './modules/tab.example'
+import BreadcrumbExample from './modules/example/breadcrumb.example'
+import ComponentExample from './modules/example/component.example'
+import ExternalLinkExample from './modules/example/external.link.example'
+import FeatureExample from './modules/example/feature.example'
+import IconExample from './modules/example/icon.example'
+import JsxExample from './modules/example/jsx.example'
+import KeepAliveExample from './modules/example/keep.alive.example'
+import MockExample from './modules/example/mock.example'
+import MultilevelMenuExample from './modules/example/multilevel.menu.example'
+import PermissionExample from './modules/example/permission.example'
+import PluginExample from './modules/example/plugin.example'
+import TabExample from './modules/example/tab.example'
 
 // 固定路由（默认路由）
 const constantRoutes: RouteRecordRaw[] = [
+  {
+    path: '/',
+    component: () => import('@/views/basic_data/index.vue'),
+    meta: {
+      title: '首页',
+    },
+  },
   {
     path: '/login',
     name: 'login',
@@ -40,7 +47,8 @@ const constantRoutes: RouteRecordRaw[] = [
 // 系统路由
 const systemRoutes: RouteRecordRaw[] = [
   {
-    path: '/',
+    path: '/home',
+    name: 'home',
     component: () => import('@/layouts/index.vue'),
     meta: {
       title: () => useSettingsStore().settings.home.title,
@@ -80,26 +88,30 @@ const asyncRoutes: Route.recordMainRaw[] = [
       BasicData,
     ],
   },
-  {
-    meta: {
-      title: '演示',
-      icon: 'i-uim:box',
-    },
-    children: [
-      MultilevelMenuExample,
-      BreadcrumbExample,
-      KeepAliveExample,
-      TabExample,
-      ComponentExample,
-      IconExample,
-      FeatureExample,
-      PluginExample,
-      PermissionExample,
-      MockExample,
-      JsxExample,
-      ExternalLinkExample,
-    ],
-  },
+  ...(import.meta.env.VITE_APP_SETTING
+    ? [
+        {
+          meta: {
+            title: '演示',
+            icon: 'i-uim:box',
+          },
+          children: [
+            MultilevelMenuExample,
+            BreadcrumbExample,
+            KeepAliveExample,
+            TabExample,
+            ComponentExample,
+            IconExample,
+            FeatureExample,
+            PluginExample,
+            PermissionExample,
+            MockExample,
+            JsxExample,
+            ExternalLinkExample,
+          ],
+        },
+      ]
+    : []),
 ]
 
 const constantRoutesByFilesystem = generatedRoutes.filter((item) => {

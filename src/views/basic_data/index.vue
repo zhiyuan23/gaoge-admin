@@ -32,14 +32,12 @@ const helpColumns = ref<any>([
 // 确认搜索
 function onSearch() {
   router.push({
-    path: '/basic_data/list',
+    name: 'basicDataList',
   })
 }
 
 // 切换数据类型
 function handleSelect(item: DataTypeOption) {
-  console.warn('切换数据类型')
-  console.warn(item)
   dataType.value = item
 }
 

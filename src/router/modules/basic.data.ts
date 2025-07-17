@@ -1,8 +1,7 @@
 import type { RouteRecordRaw } from 'vue-router'
 
 const routes: RouteRecordRaw = {
-  path: '/basic_data',
-  redirect: '/basic_data/index',
+  path: '/basic',
   name: 'basicData',
   meta: {
     title: '基础数据',

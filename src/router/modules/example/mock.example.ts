@@ -5,24 +5,24 @@ function Layout() {
 }
 
 const routes: RouteRecordRaw = {
-  path: '/tab_example',
+  path: '/mock_example',
   component: Layout,
-  redirect: '/tab_example/index',
-  name: 'tabExample',
+  redirect: '/mock_example/index',
+  name: 'mockExample',
   meta: {
-    title: '标签栏',
-    icon: 'i-ic:round-tab',
+    title: 'Mock',
+    icon: 'i-ri:database-2-line',
   },
   children: [
     {
       path: 'index',
-      name: 'tabExampleIndex',
-      component: () => import('@/views/tab_example/index.vue'),
+      name: 'mockExampleIndex',
+      component: () => import('@/views/example/mock_example/index.vue'),
       meta: {
-        title: '标签栏演示',
+        title: 'Mock',
         menu: false,
         breadcrumb: false,
-        activeMenu: '/tab_example',
+        activeMenu: '/mock_example',
       },
     },
   ],

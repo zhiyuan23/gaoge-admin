@@ -16,7 +16,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'basic',
       name: 'componentExampleBasic',
-      component: () => import('@/views/component_basic_example/index.vue'),
+      component: () => import('@/views/example/component_basic_example/index.vue'),
       meta: {
         title: '基础组件',
         icon: 'i-ep:element-plus',
@@ -32,7 +32,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'avatar',
           name: 'componentExampleBuiltInAvatar',
-          component: () => import('@/views/component_built_in_example/avatar.vue'),
+          component: () => import('@/views/example/component_built_in_example/avatar.vue'),
           meta: {
             title: '头像',
           },
@@ -40,7 +40,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'button',
           name: 'componentExampleBuiltInButton',
-          component: () => import('@/views/component_built_in_example/button.vue'),
+          component: () => import('@/views/example/component_built_in_example/button.vue'),
           meta: {
             title: '按钮',
           },
@@ -48,7 +48,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'card',
           name: 'componentExampleBuiltInCard',
-          component: () => import('@/views/component_built_in_example/card.vue'),
+          component: () => import('@/views/example/component_built_in_example/card.vue'),
           meta: {
             title: '卡片',
           },
@@ -56,7 +56,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'checkbox',
           name: 'componentExampleBuiltInCheckbox',
-          component: () => import('@/views/component_built_in_example/checkbox.vue'),
+          component: () => import('@/views/example/component_built_in_example/checkbox.vue'),
           meta: {
             title: '复选框',
           },
@@ -64,7 +64,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'contextmenu',
           name: 'componentExampleBuiltInContextMenu',
-          component: () => import('@/views/component_built_in_example/contextmenu.vue'),
+          component: () => import('@/views/example/component_built_in_example/contextmenu.vue'),
           meta: {
             title: '右键菜单',
           },
@@ -72,7 +72,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'divider',
           name: 'componentExampleBuiltInDivider',
-          component: () => import('@/views/component_built_in_example/divider.vue'),
+          component: () => import('@/views/example/component_built_in_example/divider.vue'),
           meta: {
             title: '分割线',
           },
@@ -80,7 +80,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'drawer',
           name: 'componentExampleBuiltInDrawer',
-          component: () => import('@/views/component_built_in_example/drawer.vue'),
+          component: () => import('@/views/example/component_built_in_example/drawer.vue'),
           meta: {
             title: '抽屉',
           },
@@ -88,7 +88,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'dropdown',
           name: 'componentExampleBuiltInDropdown',
-          component: () => import('@/views/component_built_in_example/dropdown.vue'),
+          component: () => import('@/views/example/component_built_in_example/dropdown.vue'),
           meta: {
             title: '下拉菜单',
           },
@@ -96,7 +96,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'fixedactionbar',
           name: 'componentExampleBuiltInFixedactionbar',
-          component: () => import('@/views/component_built_in_example/fixedactionbar.vue'),
+          component: () => import('@/views/example/component_built_in_example/fixedactionbar.vue'),
           meta: {
             title: '固定底部操作栏',
             copyright: false,
@@ -105,7 +105,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'input',
           name: 'componentExampleBuiltInInput',
-          component: () => import('@/views/component_built_in_example/input.vue'),
+          component: () => import('@/views/example/component_built_in_example/input.vue'),
           meta: {
             title: '输入框',
           },
@@ -113,7 +113,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'kbd',
           name: 'componentExampleBuiltInKbd',
-          component: () => import('@/views/component_built_in_example/kbd.vue'),
+          component: () => import('@/views/example/component_built_in_example/kbd.vue'),
           meta: {
             title: '键盘',
           },
@@ -121,7 +121,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'modal',
           name: 'componentExampleBuiltInModal',
-          component: () => import('@/views/component_built_in_example/modal.vue'),
+          component: () => import('@/views/example/component_built_in_example/modal.vue'),
           meta: {
             title: '弹窗',
           },
@@ -129,7 +129,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'notification',
           name: 'componentExampleBuiltInNotification',
-          component: () => import('@/views/component_built_in_example/notification.vue'),
+          component: () => import('@/views/example/component_built_in_example/notification.vue'),
           meta: {
             title: '通知',
           },
@@ -137,7 +137,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'pageheader',
           name: 'componentExampleBuiltInPageheader',
-          component: () => import('@/views/component_built_in_example/pageheader.vue'),
+          component: () => import('@/views/example/component_built_in_example/pageheader.vue'),
           meta: {
             title: '页头',
           },
@@ -145,7 +145,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'pagemain',
           name: 'componentExampleBuiltInPagemain',
-          component: () => import('@/views/component_built_in_example/pagemain.vue'),
+          component: () => import('@/views/example/component_built_in_example/pagemain.vue'),
           meta: {
             title: '内容块',
           },
@@ -153,7 +153,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'passwordstrength',
           name: 'componentExampleBuiltInPasswordStrength',
-          component: () => import('@/views/component_built_in_example/passwordstrength.vue'),
+          component: () => import('@/views/example/component_built_in_example/passwordstrength.vue'),
           meta: {
             title: '密码强度',
           },
@@ -161,7 +161,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'pininput',
           name: 'componentExampleBuiltInPinInput',
-          component: () => import('@/views/component_built_in_example/pininput.vue'),
+          component: () => import('@/views/example/component_built_in_example/pininput.vue'),
           meta: {
             title: '数字输入框',
           },
@@ -169,7 +169,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'popover',
           name: 'componentExampleBuiltInPopover',
-          component: () => import('@/views/component_built_in_example/popover.vue'),
+          component: () => import('@/views/example/component_built_in_example/popover.vue'),
           meta: {
             title: '浮动面板',
           },
@@ -177,7 +177,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'scrollarea',
           name: 'componentExampleBuiltInScrollarea',
-          component: () => import('@/views/component_built_in_example/scrollarea.vue'),
+          component: () => import('@/views/example/component_built_in_example/scrollarea.vue'),
           meta: {
             title: '滚动区域',
           },
@@ -185,7 +185,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'searchbar',
           name: 'componentExampleBuiltInSearchbar',
-          component: () => import('@/views/component_built_in_example/searchbar.vue'),
+          component: () => import('@/views/example/component_built_in_example/searchbar.vue'),
           meta: {
             title: '搜索面板',
           },
@@ -193,7 +193,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'select',
           name: 'componentExampleBuiltInSelect',
-          component: () => import('@/views/component_built_in_example/select.vue'),
+          component: () => import('@/views/example/component_built_in_example/select.vue'),
           meta: {
             title: '选择器',
           },
@@ -201,7 +201,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'switch',
           name: 'componentExampleBuiltInSwitch',
-          component: () => import('@/views/component_built_in_example/switch.vue'),
+          component: () => import('@/views/example/component_built_in_example/switch.vue'),
           meta: {
             title: '开关',
           },
@@ -209,7 +209,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'tabs',
           name: 'componentExampleBuiltInTabs',
-          component: () => import('@/views/component_built_in_example/tabs.vue'),
+          component: () => import('@/views/example/component_built_in_example/tabs.vue'),
           meta: {
             title: '标签页',
           },
@@ -217,7 +217,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'toast',
           name: 'componentExampleBuiltInToast',
-          component: () => import('@/views/component_built_in_example/toast.vue'),
+          component: () => import('@/views/example/component_built_in_example/toast.vue'),
           meta: {
             title: '轻提示',
           },
@@ -225,7 +225,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'tooltip',
           name: 'componentExampleBuiltInTooltip',
-          component: () => import('@/views/component_built_in_example/tooltip.vue'),
+          component: () => import('@/views/example/component_built_in_example/tooltip.vue'),
           meta: {
             title: '文字提示',
           },
@@ -243,7 +243,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'upload',
           name: 'componentExampleExtendUpload',
-          component: () => import('@/views/component_extend_example/upload.vue'),
+          component: () => import('@/views/example/component_extend_example/upload.vue'),
           meta: {
             title: '上传',
           },
@@ -251,7 +251,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'imagepreview',
           name: 'componentExampleExtendImagePreview',
-          component: () => import('@/views/component_extend_example/image.preview.vue'),
+          component: () => import('@/views/example/component_extend_example/image.preview.vue'),
           meta: {
             title: '图片预览',
           },
@@ -259,7 +259,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'pcas',
           name: 'componentExampleExtendPcas',
-          component: () => import('@/views/component_extend_example/pcas.vue'),
+          component: () => import('@/views/example/component_extend_example/pcas.vue'),
           meta: {
             title: '省市区街道联动',
           },

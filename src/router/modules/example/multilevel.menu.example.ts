@@ -17,7 +17,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'page',
       name: 'multilevelMenuExample1',
-      component: () => import('@/views/multilevel_menu_example/page.vue'),
+      component: () => import('@/views/example/multilevel_menu_example/page.vue'),
       meta: {
         title: '导航1',
       },
@@ -33,7 +33,7 @@ const routes: RouteRecordRaw = {
         {
           path: 'page',
           name: 'multilevelMenuExample2-1',
-          component: () => import('@/views/multilevel_menu_example/level2/page.vue'),
+          component: () => import('@/views/example/multilevel_menu_example/level2/page.vue'),
           meta: {
             title: '导航2-1',
           },
@@ -49,7 +49,7 @@ const routes: RouteRecordRaw = {
             {
               path: 'page1',
               name: 'multilevelMenuExample2-2-1',
-              component: () => import('@/views/multilevel_menu_example/level2/level3/page1.vue'),
+              component: () => import('@/views/example/multilevel_menu_example/level2/level3/page1.vue'),
               meta: {
                 title: '导航2-2-1',
               },
@@ -57,7 +57,7 @@ const routes: RouteRecordRaw = {
             {
               path: 'page2',
               name: 'multilevelMenuExample2-2-2',
-              component: () => import('@/views/multilevel_menu_example/level2/level3/page2.vue'),
+              component: () => import('@/views/example/multilevel_menu_example/level2/level3/page2.vue'),
               meta: {
                 title: '导航2-2-2',
               },

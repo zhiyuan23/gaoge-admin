@@ -16,7 +16,7 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
   home: {
     enable: true,
     title: '主页',
-    fullPath: '/',
+    fullPath: '/home',
   },
   layout: {
     enableMobileAdaptation: false,

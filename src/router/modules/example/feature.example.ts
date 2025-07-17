@@ -17,7 +17,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'vueuse',
       name: 'featureExampleVueuse',
-      component: () => import('@/views/feature_example/vueuse.vue'),
+      component: () => import('@/views/example/feature_example/vueuse.vue'),
       meta: {
         title: 'VueUse',
         icon: 'i-logos:vueuse',
@@ -26,7 +26,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'rules',
       name: 'featureExampleRules',
-      component: () => import('@/views/feature_example/rules.vue'),
+      component: () => import('@/views/example/feature_example/rules.vue'),
       meta: {
         title: '常用正则',
         icon: 'i-mdi:regex',
@@ -35,7 +35,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'tableautoheight',
       name: 'featureExampleTableautoheight',
-      component: () => import('@/views/feature_example/table.autoheight.vue'),
+      component: () => import('@/views/example/feature_example/table.autoheight.vue'),
       meta: {
         title: '表格高度自适应',
         icon: 'i-tabler:arrow-autofit-height',
@@ -44,7 +44,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'reload',
       name: 'featureExampleReload',
-      component: () => import('@/views/feature_example/reload.vue'),
+      component: () => import('@/views/example/feature_example/reload.vue'),
       meta: {
         title: '主页面刷新',
         icon: 'i-iconoir:refresh-double',
@@ -54,7 +54,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'menuswitch',
       name: 'featureExampleMenuswitch',
-      component: () => import('@/views/feature_example/menuswitch.vue'),
+      component: () => import('@/views/example/feature_example/menuswitch.vue'),
       meta: {
         title: '主导航切换',
         icon: 'i-charm:menu-hamburger',
@@ -63,7 +63,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'leavetips',
       name: 'featureExampleLeavetips',
-      component: () => import('@/views/feature_example/leavetips.vue'),
+      component: () => import('@/views/example/feature_example/leavetips.vue'),
       meta: {
         title: '页面离开提醒',
         icon: 'i-pepicons:leave',
@@ -72,7 +72,7 @@ const routes: RouteRecordRaw = {
     {
       path: 'scroll',
       name: 'featureExampleScroll',
-      component: () => import('@/views/feature_example/scroll.vue'),
+      component: () => import('@/views/example/feature_example/scroll.vue'),
       meta: {
         title: '记录滚动位置',
         icon: 'i-carbon:auto-scroll',
