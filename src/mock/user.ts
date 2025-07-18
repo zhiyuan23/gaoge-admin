@@ -12,7 +12,7 @@ export default defineFakeRoute([
         data: {
           account: body.account,
           token: `${body.account}:${faker.internet.jwt()}`,
-          avatar: 'https://wx.qlogo.cn/mmhead/6nBqW9zRn7po0s0HBXpcnhVDuZU04XGRaCTP2jJE0lM/0',
+          avatar: '',
         },
       }
     },
