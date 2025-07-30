@@ -117,6 +117,14 @@ const useBasicDataStore = defineStore(
       updateQueryParams,
     }
   },
+  {
+    persist: [
+      {
+        pick: ['dataType', 'dataTypeOptions'],
+        storage: localStorage,
+      },
+    ],
+  },
 )
 
 export default useBasicDataStore
