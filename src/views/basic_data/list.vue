@@ -52,14 +52,19 @@ function getList() {
 // 查看详情
 function toDetail(row: any) {
   const url = router.resolve({
-    path: '/basic_data/detail',
-    query: {
+    name: 'basicDataDetail',
+    params: {
       id: row.id,
     },
   }).href
 
   // 新标签页打开
   window.open(url, '_blank')
+}
+
+// 连接点击事件
+function linkClick(e: any) {
+  console.warn(e)
 }
 
 onMounted(() => {
@@ -85,6 +90,7 @@ onMounted(() => {
       :page-size="tablePageSize"
       :page-sizes="[10, 15, 20, 25, 50]"
       @pagination-change="paginationChange"
+      @link-click="linkClick"
     >
       <template #action="{ row }">
         <ElButton type="primary" plain size="small" @click="toDetail(row)">

@@ -10,6 +10,10 @@ import useBasicDataStore from '@/store/modules/basic-data'
 const basicDataStore = useBasicDataStore()
 const { detailData } = storeToRefs(basicDataStore)
 
+function close() {
+  window.close()
+}
+
 onMounted(() => {
   basicDataStore.fetchDetailData()
 })
@@ -77,4 +81,10 @@ onMounted(() => {
       </ElDescriptionsItem>
     </ElDescriptions>
   </div>
+  <div class="fixed bottom-0 h-18 w-full flex-center-center border-t bg-background">
+    <ElButton type="primary" @click="close">
+      关闭
+    </ElButton>
+  </div>
+  <div class="h-18" />
 </template>

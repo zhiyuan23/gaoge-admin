@@ -5,13 +5,13 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'xkzh', label: '许可证号' },
     { prop: 'gmpZsh', label: 'GMP证书' },
     { prop: 'cym', label: '曾用名' },
-    // {
-    //   label: '操作',
-    //   slot: 'action',
-    //   width: 100,
-    //   fixed: 'right' as const,
-    //   align: 'center' as const,
-    // },
+    {
+      label: '操作',
+      slot: 'action',
+      width: 100,
+      fixed: 'right' as const,
+      align: 'center' as const,
+    },
   ],
   // 兽药产品批准文号数据
   sycppzwh: [
@@ -131,11 +131,21 @@ export const BASIC_DATA_COLUMNS = {
   ],
   // 兽药国家标准数据
   sygjbz: [
-    { prop: 'bzmc', label: '标准名称' },
+    {
+      prop: 'bzmc',
+      label: '标准名称',
+      link: true,
+      linkParams: { type: 'list' },
+    },
     { prop: 'gg', label: '规格' },
-    { prop: 'bzbm', label: '标准编码', width: 100 },
-    { prop: 'fjm', label: '附件名' },
-    { prop: 'bz', label: '备注', width: 100 },
+    { prop: 'bzbm', label: '标准编码', width: 200 },
+    {
+      prop: 'fjm',
+      label: '附件名',
+      link: true,
+      linkParams: { type: 'pdf' },
+    },
+    { prop: 'bz', label: '备注', width: 150 },
   ],
   // 兽用抗菌药使用减量化达标养殖场数据
   companyIntegrityRecord: [

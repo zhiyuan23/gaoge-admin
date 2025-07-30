@@ -1,12 +1,8 @@
 <script setup lang="ts">
-import type { TableColumnCtx } from 'element-plus/es/components/table/src/table-column/defaults'
+import type { TableColumn } from '@/constants/modules/basic-data/types.ts'
 import type { PropType } from 'vue'
 import { computed, ref, watch } from 'vue'
 
-// 列配置类型
-export interface ColumnProps<T = any> extends Partial<TableColumnCtx<T>> {
-  slot?: string // 插槽名称
-}
 type TableSize = '' | 'large' | 'default' | 'small'
 
 defineOptions({
@@ -16,7 +12,7 @@ defineOptions({
 const props = defineProps({
   // 表格列配置
   columns: {
-    type: Array as PropType<ColumnProps[]>,
+    type: Array as PropType<TableColumn[]>,
     required: true,
   },
   // 是否显示序号列
@@ -94,7 +90,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:page', 'update:pageSize', 'paginationChange'])
+const emit = defineEmits(['update:page', 'update:pageSize', 'paginationChange', 'linkClick'])
 
 // 当前页码
 const currentPage = ref(props.page)
@@ -103,7 +99,7 @@ const internalPageSize = ref(props.pageSize)
 
 // 最终列配置（加上序号列）
 const finalColumns = computed(() => {
-  const indexCol: ColumnProps = {
+  const indexCol: TableColumn = {
     label: '序号',
     type: 'index',
     width: 70,
@@ -172,11 +168,23 @@ function emitPaginationChange() {
         </ElTableColumn>
 
         <!-- 普通列 -->
-        <ElTableColumn
-          v-else v-bind="col"
-          show-overflow-tooltip
-          color="text-primary"
-        />
+        <ElTableColumn v-else v-bind="col" show-overflow-tooltip color="text-primary">
+          <template #default="{ row }">
+            <template v-if="typeof col.link === 'function'">
+              <ElLink type="primary" :href="col.link(row)" target="_blank">
+                {{ row[col.prop!] }}
+              </ElLink>
+            </template>
+            <template v-else-if="col.link === true">
+              <ElLink type="primary" @click="() => emit('linkClick', { row, prop: col.prop, linkParams: col.linkParams })">
+                {{ row[col.prop!] }}
+              </ElLink>
+            </template>
+            <!-- <template v-else>
+              {{ row[col.prop!] }}
+            </template> -->
+          </template>
+        </ElTableColumn>
       </template>
     </ElTable>
 
