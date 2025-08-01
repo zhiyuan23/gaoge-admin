@@ -80,7 +80,13 @@ export const BASIC_DATA_COLUMNS = {
   // 临床试验审批数据
   lcsysp: [
     { prop: 'pjh', label: '批件号', width: 120 },
-    { prop: 'xmmc', label: '项目名称', width: 500 },
+    {
+      prop: 'xmmc',
+      label: '项目名称',
+      width: 500,
+      link: true,
+      linkParams: { type: 'list' },
+    },
     { prop: 'sqdwmc', label: '申请单位名称', width: 500 },
     { prop: 'szcpph', label: '试制产品批号', width: 500 },
     { prop: 'szcpsl', label: '试制产品的数量', width: 500 },
@@ -135,7 +141,7 @@ export const BASIC_DATA_COLUMNS = {
       prop: 'bzmc',
       label: '标准名称',
       link: true,
-      linkParams: { type: 'list' },
+      linkParams: { type: 'list', name: 'fjm', dataTypeCode: 'sycppzwh' },
     },
     { prop: 'gg', label: '规格' },
     { prop: 'bzbm', label: '标准编码', width: 200 },
@@ -143,7 +149,7 @@ export const BASIC_DATA_COLUMNS = {
       prop: 'fjm',
       label: '附件名',
       link: true,
-      linkParams: { type: 'pdf' },
+      linkParams: { type: 'pdf', name: 'fj' },
     },
     { prop: 'bz', label: '备注', width: 150 },
   ],

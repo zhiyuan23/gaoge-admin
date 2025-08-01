@@ -23,6 +23,12 @@ export default {
     rawResponse: true,
   }),
 
+  // 获取详情
+  // getDetailApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/detail`, data, {
+  //   noAuth: true,
+  //   rawResponse: true,
+  // }),
+
   // 获取列表
   // getListApi: (path: string, data: object) => api.post('basic/list', data, {
   //   baseURL: '/mock/',

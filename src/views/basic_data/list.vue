@@ -49,6 +49,28 @@ function getList() {
   basicDataStore.fetchTableRecords()
 }
 
+// 链接点击事件
+function linkClick({ linkParams, row }: any) {
+  console.warn(row)
+
+  if (linkParams.type === 'list') {
+    toList(linkParams.name, row)
+  }
+  if (linkParams.type === 'pdf') {
+    openPdf(linkParams.name, row)
+  }
+}
+
+// 查看列表
+function toList(name: string, row: any) {
+  console.warn(row[name])
+}
+
+// 查看PDF
+function openPdf(name: string, row: any) {
+  console.warn(row[name])
+}
+
 // 查看详情
 function toDetail(row: any) {
   const url = router.resolve({
@@ -60,11 +82,6 @@ function toDetail(row: any) {
 
   // 新标签页打开
   window.open(url, '_blank')
-}
-
-// 连接点击事件
-function linkClick(e: any) {
-  console.warn(e)
 }
 
 onMounted(() => {

@@ -121,7 +121,7 @@ const useBasicDataStore = defineStore(
     persist: [
       {
         pick: ['dataType', 'dataTypeOptions'],
-        storage: localStorage,
+        storage: sessionStorage,
       },
     ],
   },
