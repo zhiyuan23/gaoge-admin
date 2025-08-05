@@ -5,7 +5,7 @@
 
 <script lang="ts" setup>
 import type { DataTypeOption } from '@/constants/modules/basic-data'
-import BasicFooter from '@/components/Basic/BasicFooter.vue'
+// import BasicFooter from '@/components/Basic/BasicFooter.vue'
 import Copyright from '@/components/Basic/Copyright.vue'
 import useBasicDataStore from '@/store/modules/basic-data'
 import { Download, Phone, Upload } from '@element-plus/icons-vue'
@@ -102,7 +102,7 @@ onMounted(() => {
     </div>
     <template v-if="props.showFooter">
       <Copyright color="text-white" />
-      <BasicFooter color="text-white" />
+      <!-- <BasicFooter color="text-white" /> -->
     </template>
 
     <ElDialog v-model="showModal" width="1000" title="支持电话">

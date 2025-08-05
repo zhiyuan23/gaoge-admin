@@ -103,6 +103,7 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'bcydwmc', label: '被抽样单位', width: 350 },
     { prop: 'ph', label: '生产批号', width: 120 },
     { prop: 'jyxm', label: '检验项目', width: 500 },
+    { prop: 'bhgxm', label: '不符合规定项目', width: 500 },
     { prop: 'jydw', label: '检验机构', width: 100 },
     { prop: 'jyyj', label: '检验依据', width: 400 },
     { prop: 'bz', label: '备注', width: 150 },

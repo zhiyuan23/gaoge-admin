@@ -9,6 +9,7 @@ const useBasicDataStore = defineStore(
   () => {
     // 弹窗实例
     let notificationInstance: ReturnType<typeof ElNotification> | null = null
+    let lastTipMessage: string | null = null
 
     // 数据类型
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
@@ -128,11 +129,13 @@ const useBasicDataStore = defineStore(
 
     // 显示友情提示提示
     function showTips() {
-      closeTips()
       const message = dataTypeTips.value[dataType.value.code]
-      if (!message) {
+      if (!message || message === lastTipMessage) {
         return
       }
+
+      closeTips()
+      lastTipMessage = message
 
       notificationInstance = ElNotification({
         title: `${dataType.value.label}库友情提示`,
