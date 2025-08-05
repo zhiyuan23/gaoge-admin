@@ -1,4 +1,11 @@
 export const BASIC_DATA_COLUMNS = {
+  // 兽药经营企业数据
+  // distributor: [
+  //   { prop: 'qymc', label: '企业名称' },
+  //   { prop: 'xkzh', label: '许可证号' },
+  //   { prop: 'gmpZsh', label: 'GMP证书' },
+  //   { prop: 'cym', label: '曾用名' },
+  // ],
   // 兽药生产企业数据
   syscqyinfo: [
     { prop: 'qymc', label: '企业名称' },
@@ -8,6 +15,7 @@ export const BASIC_DATA_COLUMNS = {
     {
       label: '操作',
       slot: 'action',
+      actionParams: { name: 'qydm', detailIdName: 'qydm' },
       width: 100,
       fixed: 'right' as const,
       align: 'center' as const,
@@ -51,7 +59,18 @@ export const BASIC_DATA_COLUMNS = {
   hyjdcjjg: [
     { prop: 'nd', label: '年度', width: 70 },
     { prop: 'jd', label: '季度', width: 70 },
-    { prop: 'cpwh', label: '批准文号', width: 180 },
+    {
+      prop: 'cpwh',
+      label: '批准文号',
+      width: 180,
+      link: true,
+      linkParams: {
+        type: 'detail',
+        code: 'sycppzwh',
+        name: 'pzwhitemid',
+        detailIdName: 'id',
+      },
+    },
     { prop: 'cjhj', label: '抽样环节', width: 100 },
     { prop: 'cpmc', label: '通用名称', width: 250 },
     { prop: 'spm', label: '商品名', width: 150 },
@@ -66,7 +85,18 @@ export const BASIC_DATA_COLUMNS = {
   syjdcjjg: [
     { prop: 'nd', label: '年度', width: 70 },
     { prop: 'jd', label: '季度', width: 70 },
-    { prop: 'cpwh', label: '批准文号', width: 180 },
+    {
+      prop: 'cpwh',
+      label: '批准文号',
+      width: 180,
+      link: true,
+      linkParams: {
+        type: 'detail',
+        code: 'sycppzwh',
+        name: 'pzwhitemid',
+        detailIdName: 'id',
+      },
+    },
     { prop: 'cjhj', label: '抽样环节', width: 100 },
     { prop: 'cpmc', label: '通用名称', width: 300 },
     { prop: 'bcscqy', label: '标称生产企业', width: 350 },
@@ -85,7 +115,11 @@ export const BASIC_DATA_COLUMNS = {
       label: '项目名称',
       width: 500,
       link: true,
-      linkParams: { type: 'list' },
+      linkParams: {
+        type: 'list',
+        name: 'xmmc',
+        code: 'gnxsyzc',
+      },
     },
     { prop: 'sqdwmc', label: '申请单位名称', width: 500 },
     { prop: 'szcpph', label: '试制产品批号', width: 500 },
@@ -125,14 +159,24 @@ export const BASIC_DATA_COLUMNS = {
   gnsybqsms: [
     { prop: 'tym', label: '通用名' },
     { prop: 'gg', label: '规格' },
-    { prop: 'fjm', label: '说明书范本' },
+    {
+      prop: 'fjm',
+      label: '说明书范本',
+      link: true,
+      linkParams: { type: 'pdf', name: 'fj' },
+    },
     { prop: 'fjsm', label: '附件说明', width: 100 },
   ],
   // 进口兽药说明书数据
   jksybqsms: [
     { prop: 'tym', label: '通用名' },
     { prop: 'gg', label: '规格' },
-    { prop: 'fjm', label: '说明书范本' },
+    {
+      prop: 'fjm',
+      label: '说明书范本',
+      link: true,
+      linkParams: { type: 'pdf', name: 'fj' },
+    },
     { prop: 'fjsm', label: '附件说明', width: 100 },
   ],
   // 兽药国家标准数据
@@ -141,7 +185,11 @@ export const BASIC_DATA_COLUMNS = {
       prop: 'bzmc',
       label: '标准名称',
       link: true,
-      linkParams: { type: 'list', name: 'fjm', dataTypeCode: 'sycppzwh' },
+      linkParams: {
+        type: 'list',
+        name: 'fjm',
+        code: 'sycppzwh',
+      },
     },
     { prop: 'gg', label: '规格' },
     { prop: 'bzbm', label: '标准编码', width: 200 },

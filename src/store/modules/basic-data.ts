@@ -9,6 +9,7 @@ const useBasicDataStore = defineStore(
     // 数据类型
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
     const dataType = ref<DataTypeOption>(dataTypeOptions.value[0])
+    const apiPath = ref<string>(dataType.value.code)
 
     // 查询条件
     const commonSearch = ref<string>('')
@@ -23,6 +24,7 @@ const useBasicDataStore = defineStore(
 
     // 详情数据
     const detailData = ref<any>({})
+    const detailIdName = ref<string>('id')
 
     // 帮助信息
     const helpList = ref<any[]>([])
@@ -36,6 +38,16 @@ const useBasicDataStore = defineStore(
     // 下载帮助文档
     async function fetchHelpDoc() {
       await apiBasicData.getHelpFile()
+    }
+
+    // 设置数据类型选项
+    function setDataTypeByCode(code: any) {
+      const foundItem = dataTypeOptions.value.find(item => item.code === code)
+      if (foundItem) {
+        dataType.value = foundItem
+        return true
+      }
+      return false
     }
 
     // 更新查询条件
@@ -60,6 +72,7 @@ const useBasicDataStore = defineStore(
     async function fetchTableColumns() {
       tableColumns.value = BASIC_DATA_COLUMNS[dataType.value.code as keyof typeof BASIC_DATA_COLUMNS]
     }
+
     // 获取表格数据
     async function fetchTableRecords() {
       const baseConditions = []
@@ -93,15 +106,16 @@ const useBasicDataStore = defineStore(
     }
 
     // 获取详情数据
-    async function fetchDetailData() {
-      const res = await apiBasicData.getDetailApi()
-      detailData.value = res.data
+    async function fetchDetailData(params: any) {
+      const res = await apiBasicData.getDetailApi(apiPath.value, params)
+      detailData.value = res.data[0]
     }
 
     return {
       helpList,
       dataTypeOptions,
       dataType,
+      apiPath,
       commonSearch,
       tablePage,
       tablePageSize,
@@ -109,18 +123,25 @@ const useBasicDataStore = defineStore(
       tableRecords,
       totalRecords,
       detailData,
+      detailIdName,
       fetchHelpList,
       fetchHelpDoc,
       fetchTableColumns,
       fetchTableRecords,
       fetchDetailData,
+      setDataTypeByCode,
       updateQueryParams,
     }
   },
   {
     persist: [
       {
-        pick: ['dataType', 'dataTypeOptions'],
+        pick: [
+          'dataType',
+          'dataTypeOptions',
+          'detailIdName',
+          'apiPath',
+        ],
         storage: sessionStorage,
       },
     ],

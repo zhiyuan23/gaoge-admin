@@ -6,6 +6,7 @@ export interface TableColumn {
   type?: string
   link?: boolean | ((row: any) => string)
   linkParams?: any
+  actionParams?: any
   fixed?: 'left' | 'right' | boolean
   align?: 'left' | 'center' | 'right'
 }
@@ -14,4 +15,5 @@ export interface DataTypeOption {
   code: string
   label: string
   placeholder?: string
+  detailId?: string
 }

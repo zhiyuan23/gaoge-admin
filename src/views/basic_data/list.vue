@@ -8,6 +8,7 @@
 import BasicHeader from '@/components/Basic/BasicHeader.vue'
 import Table from '@/components/Table/index.vue'
 import useBasicDataStore from '@/store/modules/basic-data'
+import { toast } from 'vue-sonner'
 import AdvancedSearch from './components/AdvancedSearch.vue'
 import SearchBox from './components/SearchBox.vue'
 
@@ -51,37 +52,54 @@ function getList() {
 
 // 链接点击事件
 function linkClick({ linkParams, row }: any) {
-  console.warn(row)
-
   if (linkParams.type === 'list') {
-    toList(linkParams.name, row)
+    toList(row, linkParams)
+  }
+  if (linkParams.type === 'detail') {
+    toDetail(row, linkParams)
   }
   if (linkParams.type === 'pdf') {
-    openPdf(linkParams.name, row)
+    openPdf(row, linkParams.name)
   }
 }
 
 // 查看列表
-function toList(name: string, row: any) {
-  console.warn(row[name])
-}
-
-// 查看PDF
-function openPdf(name: string, row: any) {
-  console.warn(row[name])
+function toList(row: any, { name, code }: any) {
+  basicDataStore.setDataTypeByCode(code)
+  basicDataStore.commonSearch = row[name]
+  getList()
 }
 
 // 查看详情
-function toDetail(row: any) {
+function toDetail(row: any, { name, detailIdName, code = '' }: any) {
+  basicDataStore.apiPath = code || basicDataStore.dataType.code
+  basicDataStore.detailIdName = detailIdName
+
   const url = router.resolve({
     name: 'basicDataDetail',
     params: {
-      id: row.id,
+      id: row[name],
     },
   }).href
 
+  setTimeout(() => {
+    window.open(url, '_blank')
+  }, 0)
+}
+
+// 查看PDF
+function openPdf(row: any, name: string) {
+  const fieldName = row[name]
+  if (!fieldName) {
+    toast.warning('没有可查看的PDF文件！')
+    return
+  }
+
   // 新标签页打开
-  window.open(url, '_blank')
+  const baseUrl = 'http://vdts.ivdc.org.cn:8099/cxPDF'
+  // const baseUrl = getResourceUrl('pdf')
+  const pdfUrl = `${baseUrl}${fieldName}`
+  window.open(pdfUrl, '_blank')
 }
 
 onMounted(() => {
@@ -109,8 +127,8 @@ onMounted(() => {
       @pagination-change="paginationChange"
       @link-click="linkClick"
     >
-      <template #action="{ row }">
-        <ElButton type="primary" plain size="small" @click="toDetail(row)">
+      <template #action="{ row, actionParams }">
+        <ElButton type="primary" plain size="small" @click="toDetail(row, actionParams)">
           查看
         </ElButton>
       </template>

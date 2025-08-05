@@ -163,7 +163,7 @@ function emitPaginationChange() {
         <!-- 自定义列插槽 -->
         <ElTableColumn v-if="col.slot" v-bind="col">
           <template #default="scope">
-            <slot :name="col.slot" v-bind="scope" />
+            <slot :name="col.slot" v-bind="{ ...scope, actionParams: col.actionParams }" />
           </template>
         </ElTableColumn>
 

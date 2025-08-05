@@ -23,6 +23,7 @@ const { dataTypeOptions, dataType, commonSearch } = storeToRefs(basicDataStore)
 
 // 类型切换
 function handleChange() {
+  basicDataStore.commonSearch = ''
   basicDataStore.updateQueryParams({ conditions: [] })
   emit('change')
 }
@@ -67,6 +68,7 @@ function handleOpenAdvanced() {
       <el-input
         v-model="commonSearch"
         :placeholder="dataType.placeholder"
+        clearable
         size="large"
         class="ml-1"
         @keyup.enter="handleConfirm"
@@ -101,6 +103,12 @@ function handleOpenAdvanced() {
   &:deep(.el-input__wrapper) {
     width: 300px;
     padding-right: 0;
+  }
+
+  &:deep(.el-input__icon) {
+    position: absolute;
+    right: 70px;
+    background-color: hsl(var(--background));
   }
 
   &:deep(.el-icon) {

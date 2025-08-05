@@ -6,6 +6,7 @@
 <script lang="ts" setup>
 import BasicHeader from '@/components/Basic/BasicHeader.vue'
 import useBasicDataStore from '@/store/modules/basic-data'
+import { useRoute } from 'vue-router'
 
 const basicDataStore = useBasicDataStore()
 const { detailData } = storeToRefs(basicDataStore)
@@ -15,7 +16,13 @@ function close() {
 }
 
 onMounted(() => {
-  basicDataStore.fetchDetailData()
+  const route = useRoute()
+  const id = route.params.id
+  const params = {
+    [basicDataStore.detailIdName]: id,
+  }
+
+  basicDataStore.fetchDetailData(params)
 })
 </script>
 

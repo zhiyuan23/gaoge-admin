@@ -24,10 +24,13 @@ export default {
   }),
 
   // 获取详情
-  // getDetailApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/detail`, data, {
-  //   noAuth: true,
-  //   rawResponse: true,
-  // }),
+  getDetailApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/detail`, data, {
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    noAuth: true,
+    rawResponse: true,
+  }),
 
   // 获取列表
   // getListApi: (path: string, data: object) => api.post('basic/list', data, {
@@ -36,7 +39,7 @@ export default {
   // }),
 
   // 获取详情
-  getDetailApi: () => api.get('basic/detail', {
-    baseURL: '/mock/',
-  }),
+  // getDetailApi: () => api.get('basic/detail', {
+  //   baseURL: '/mock/',
+  // }),
 }

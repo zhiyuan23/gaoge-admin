@@ -31,7 +31,7 @@ const routes: RouteRecordRaw = {
       },
     },
     {
-      path: 'detail',
+      path: 'detail/:id',
       name: 'basicDataDetail',
       component: () => import('@/views/basic_data/detail.vue'),
       meta: {
