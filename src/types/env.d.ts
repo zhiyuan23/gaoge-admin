@@ -10,9 +10,13 @@ interface ImportMetaEnv {
    */
   readonly VITE_APP_TITLE: string
   /**
-   * 接口请求地址，会设置到 axios 的 baseURL 参数上
+   * 服务端地址
    */
-  readonly VITE_APP_API_BASEURL: string
+  readonly VITE_APP_BASEURL: string
+  readonly VITE_APP_API_PREFIX: string
+  readonly VITE_APP_PDF_PREFIX: string
+  readonly VITE_APP_IMAGE_PREFIX: string
+  readonly VITE_APP_DOC_PREFIX: string
   /**
    * 调试工具，可设置 eruda 或 vconsole，如果不需要开启则留空
    */

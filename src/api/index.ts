@@ -1,14 +1,15 @@
 import useUserStore from '@/store/modules/user'
+import { getApiBaseUrl } from '@/utils/url'
 import axios from 'axios'
 // import qs from 'qs'
 import { toast } from 'vue-sonner'
 
 const api = axios.create({
-  baseURL: (import.meta.env.DEV && import.meta.env.VITE_OPEN_PROXY) ? '/' : import.meta.env.VITE_APP_API_BASEURL,
+  baseURL: (import.meta.env.DEV && import.meta.env.VITE_OPEN_PROXY) ? '/' : getApiBaseUrl(),
   timeout: 1000 * 60,
   responseType: 'json',
   headers: {
-    'Content-Type': 'application/json;charset=UTF-8',
+    'Content-Type': 'application/json',
   },
 })
 
