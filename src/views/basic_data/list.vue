@@ -8,6 +8,7 @@
 import BasicHeader from '@/components/Basic/BasicHeader.vue'
 import Table from '@/components/Table/index.vue'
 import useBasicDataStore from '@/store/modules/basic-data'
+import { getResourceUrl } from '@/utils/url'
 import { toast } from 'vue-sonner'
 import AdvancedSearch from './components/AdvancedSearch.vue'
 import SearchBox from './components/SearchBox.vue'
@@ -96,14 +97,19 @@ function openPdf(row: any, name: string) {
   }
 
   // 新标签页打开
-  const baseUrl = 'http://vdts.ivdc.org.cn:8099/cxPDF'
-  // const baseUrl = getResourceUrl('pdf')
+  // const baseUrl = 'http://vdts.ivdc.org.cn:8099/cxPDF'
+  const baseUrl = getResourceUrl('pdf')
   const pdfUrl = `${baseUrl}${fieldName}`
   window.open(pdfUrl, '_blank')
 }
 
 onMounted(() => {
-  getList()
+  basicDataStore.fetchTableColumns()
+})
+
+onUnmounted(() => {
+  basicDataStore.initQueryConditions()
+  basicDataStore.closeTips()
 })
 </script>
 
@@ -143,3 +149,10 @@ onMounted(() => {
     @confirm="onConfirm"
   />
 </template>
+
+<style>
+.full-width-notification {
+  width: auto;
+  padding: 12px 10px;
+}
+</style>

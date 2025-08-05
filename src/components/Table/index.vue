@@ -209,6 +209,12 @@ function emitPaginationChange() {
   color: text-primary;
 }
 
+/* 保持表格行高统一 */
+:deep(.el-table .el-table__cell) {
+  height: 40px;
+  padding: 0;
+}
+
 :deep(.el-table-fixed-column--right) {
   padding: 0;
 }

@@ -4,6 +4,7 @@ import useBasicDataStore from '@/store/modules/basic-data'
 
 import { Search } from '@element-plus/icons-vue'
 import { Icon } from '@iconify/vue'
+import { toast } from 'vue-sonner'
 
 defineOptions({
   name: 'SearchBox',
@@ -23,20 +24,16 @@ const { dataTypeOptions, dataType, commonSearch } = storeToRefs(basicDataStore)
 
 // 类型切换
 function handleChange() {
-  basicDataStore.commonSearch = ''
-  basicDataStore.updateQueryParams({ conditions: [] })
+  basicDataStore.initQueryConditions()
   emit('change')
 }
 
 // 输入框确认
 function handleConfirm() {
-  // if (!keyword) {
-  //   useFaModal().warning({
-  //     title: '温馨提醒',
-  //     content: '请输入关键字进行搜索',
-  //   })
-  //   return
-  // }
+  if (!basicDataStore.commonSearch) {
+    toast.warning('请输入搜索内容查询')
+    return
+  }
   basicDataStore.updateQueryParams({ page: 1 })
   emit('confirm')
 }

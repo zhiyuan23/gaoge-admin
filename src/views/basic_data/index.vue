@@ -34,6 +34,8 @@ function onSearch() {
   router.push({
     name: 'basicDataList',
   })
+  basicDataStore.fetchTableColumns()
+  basicDataStore.fetchTableRecords()
 }
 
 // 切换数据类型

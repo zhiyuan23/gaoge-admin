@@ -1,13 +1,18 @@
 import type { DataTypeOption, TableColumn } from '@/constants/modules/basic-data'
 import apiBasicData from '@/api/modules/basic-data'
-import { BASIC_DATA_COLUMNS, DATA_TYPE_OPTIONS } from '@/constants/modules/basic-data'
+import { BASIC_DATA_COLUMNS, DATA_TYPE_OPTIONS, DATA_TYPE_TIPS } from '@/constants/modules/basic-data'
+import { ElNotification } from 'element-plus'
 
 const useBasicDataStore = defineStore(
   // 唯一ID
   'basic-data',
   () => {
+    // 弹窗实例
+    let notificationInstance: ReturnType<typeof ElNotification> | null = null
+
     // 数据类型
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
+    const dataTypeTips = ref<any>(DATA_TYPE_TIPS)
     const dataType = ref<DataTypeOption>(dataTypeOptions.value[0])
     const apiPath = ref<string>(dataType.value.code)
 
@@ -68,6 +73,12 @@ const useBasicDataStore = defineStore(
       }
     }
 
+    // 初始化查询条件
+    function initQueryConditions() {
+      commonSearch.value = ''
+      updateQueryParams({ conditions: [] })
+    }
+
     // 获取列配置
     async function fetchTableColumns() {
       tableColumns.value = BASIC_DATA_COLUMNS[dataType.value.code as keyof typeof BASIC_DATA_COLUMNS]
@@ -85,6 +96,10 @@ const useBasicDataStore = defineStore(
           value: commonSearch.value,
         })
       }
+
+      // 切换提示
+      showTips()
+
       const existingConditions = conditionItems.value.filter(
         (item: { field: string }) => item.field !== 'commonSearch',
       )
@@ -111,9 +126,35 @@ const useBasicDataStore = defineStore(
       detailData.value = res.data[0]
     }
 
+    // 显示友情提示提示
+    function showTips() {
+      closeTips()
+      const message = dataTypeTips.value[dataType.value.code]
+      if (!message) {
+        return
+      }
+
+      notificationInstance = ElNotification({
+        title: `${dataType.value.label}库友情提示`,
+        dangerouslyUseHTMLString: true,
+        message,
+        duration: 0,
+        customClass: 'full-width-notification',
+      })
+    }
+
+    // 关闭友情提示
+    function closeTips() {
+      if (notificationInstance) {
+        notificationInstance.close()
+        notificationInstance = null
+      }
+    }
+
     return {
       helpList,
       dataTypeOptions,
+      dataTypeTips,
       dataType,
       apiPath,
       commonSearch,
@@ -131,6 +172,9 @@ const useBasicDataStore = defineStore(
       fetchDetailData,
       setDataTypeByCode,
       updateQueryParams,
+      initQueryConditions,
+      showTips,
+      closeTips,
     }
   },
   {
