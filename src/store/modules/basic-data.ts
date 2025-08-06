@@ -130,11 +130,16 @@ const useBasicDataStore = defineStore(
     // 显示友情提示提示
     function showTips() {
       const message = dataTypeTips.value[dataType.value.code]
-      if (!message || message === lastTipMessage) {
+      if (message === lastTipMessage) {
         return
       }
 
       closeTips()
+
+      if (!message) {
+        return
+      }
+
       lastTipMessage = message
 
       notificationInstance = ElNotification({

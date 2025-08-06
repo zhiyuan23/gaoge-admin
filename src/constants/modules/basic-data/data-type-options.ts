@@ -1,6 +1,6 @@
 export const DATA_TYPE_OPTIONS = [
-  // { label: '兽药经营企业数据', code: 'distributor', placeholder: '请输入企业名称/许可证号/所在地' },
   { label: '兽药生产企业数据', code: 'syscqyinfo', placeholder: '请输入企业名称/许可证号/GMP证书号查询' },
+  { label: '兽药经营企业数据', code: 'distributor', placeholder: '请输入企业名称/许可证号/所在地' },
   { label: '兽药产品批准文号数据', code: 'sycppzwh', placeholder: '请输入企业名称/通用名/商品名/批准文号查询' },
   { label: '进口兽用生物制品批签发数据', code: 'jksyby', placeholder: '请输入代理机构/生产企业/产品/注册证书号/生产批号查询' },
   { label: '国产兽用生物制品批签发数据', code: 'syswzppqfgl', placeholder: '请输入生产企业/产品/生产批号查询' },

@@ -1,11 +1,4 @@
 export const BASIC_DATA_COLUMNS = {
-  // 兽药经营企业数据
-  // distributor: [
-  //   { prop: 'qymc', label: '企业名称' },
-  //   { prop: 'xkzh', label: '许可证号' },
-  //   { prop: 'gmpZsh', label: 'GMP证书' },
-  //   { prop: 'cym', label: '曾用名' },
-  // ],
   // 兽药生产企业数据
   syscqyinfo: [
     { prop: 'qymc', label: '企业名称' },
@@ -20,6 +13,18 @@ export const BASIC_DATA_COLUMNS = {
       fixed: 'right' as const,
       align: 'center' as const,
     },
+  ],
+  // 兽药经营企业数据
+  distributor: [
+    { prop: 'code', label: '许可证号', width: 300 },
+    { prop: 'fullName', label: '企业名称', width: 300 },
+    { prop: 'location', label: '所在地', width: 300 },
+    { prop: 'distributorAddress', label: '经营地址', width: 400 },
+    { prop: 'distributorRange', label: '经营范围', width: 400 },
+    { prop: 'issueDate', label: '发证日期', width: 110 },
+    { prop: 'terminationDate', label: '有效期至', width: 110 },
+    { prop: 'issuingAgency', label: '发证机关', width: 200 },
+    { prop: 'nameUsedBefore', label: '备注', width: 300 },
   ],
   // 兽药产品批准文号数据
   sycppzwh: [

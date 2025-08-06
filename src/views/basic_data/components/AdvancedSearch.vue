@@ -20,8 +20,8 @@ const { dataTypeOptions, dataType } = storeToRefs(basicDataStore)
 const formModules = import.meta.glob<{ default: Component }>('./advanced-forms/Form*.vue', { eager: true })
 
 const formComponents = Object.fromEntries(
-  dataTypeOptions.value.map((item, index) => {
-    const componentPath = `./advanced-forms/Form${index + 1}${item.code}.vue`
+  dataTypeOptions.value.map((item) => {
+    const componentPath = `./advanced-forms/Form_${item.code}.vue`
     const module = formModules[componentPath]
     return [item.code, defineAsyncComponent(() => Promise.resolve(module.default))]
   }),
