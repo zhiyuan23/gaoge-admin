@@ -32,20 +32,20 @@
 
 ## 📁 项目结构（核心）
 
-```plaintext
+<!-- ```plaintext -->
 国家兽药基础数据库
 ├─ src/                    # 核心源码
 │  ├─ api/                 # 接口封装
 │  ├─ assets/              # 静态资源（图片/图标/样式）
 │  ├─ components/          # 公共组件
+│  ├─ constants/           # 常量配置
 │  ├─ layouts/             # 页面布局
 │  ├─ router/              # 路由配置
 │  ├─ store/               # Pinia 状态管理
 │  ├─ views/               # 页面视图
-│  ├─ utils/               # 工具函数
-│  ├─ constants/           # 常量配置
-│  ├─ slots/               # 插槽/扩展
 │  ├─ ui/                  # UI 组件封装
+│  ├─ utils/               # 工具函数
+│  ├─ slots/               # 插槽/扩展
 │  └─ main.ts              # 应用入口
 ├─ public/                 # 公共静态资源
 ├─ plop-templates/         # plop 模板自动化
@@ -63,6 +63,7 @@
 ### 安装依赖
 
 推荐使用 pnpm：
+
 ```bash
 pnpm install
 
@@ -118,10 +119,10 @@ pnpm new
 
 ---
 
-## 📄 License
+<!-- ## 📄 License
 
 [MIT](LICENSE)
 
 ---
 
-> ✨ 欢迎提出 Issue / PR，让这个项目变得更好！
+> ✨ 欢迎提出 Issue / PR，让这个项目变得更好！ -->
