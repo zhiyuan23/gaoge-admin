@@ -3,13 +3,13 @@ import { useConditionConverter } from '@/utils/composables/useConditionConverter
 
 const formData = reactive({
   fullName: '',
-  code: '',
+  jyCode: '',
   location: '',
 })
 
 function resetForm() {
   formData.fullName = ''
-  formData.code = ''
+  formData.jyCode = ''
   formData.location = ''
 }
 
@@ -33,7 +33,7 @@ defineExpose({
     </el-form-item>
 
     <el-form-item label="许可证号">
-      <el-input v-model="formData.code" clearable placeholder="请输入许可证号" />
+      <el-input v-model="formData.jyCode" clearable placeholder="请输入许可证号" />
     </el-form-item>
 
     <el-form-item label="所在地">
