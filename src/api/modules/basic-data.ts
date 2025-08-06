@@ -32,6 +32,15 @@ export default {
     rawResponse: true,
   }),
 
+  // 获取详情-通过批准文号查询
+  // getDetailByPzwhApi: (data: object) => api.post(`${BASE_PATH}/sycppzwh/findByPzwh`, data, {
+  //   headers: {
+  //     'Content-Type': 'application/x-www-form-urlencoded',
+  //   },
+  //   noAuth: true,
+  //   rawResponse: true,
+  // }),
+
   // 获取列表
   // getListApi: (path: string, data: object) => api.post('basic/list', data, {
   //   baseURL: '/mock/',

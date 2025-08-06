@@ -72,9 +72,8 @@ function toList(row: any, { name, code }: any) {
 }
 
 // 查看详情
-function toDetail(row: any, { name, detailIdName, code = '' }: any) {
-  basicDataStore.detailTypeCode = code || basicDataStore.dataType.code
-  basicDataStore.detailIdName = detailIdName
+function toDetail(row: any, { name }: any) {
+  basicDataStore.detailIdName = name
 
   const id = row[name]
   if (!id) {

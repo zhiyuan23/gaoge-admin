@@ -8,7 +8,7 @@ export const BASIC_DATA_COLUMNS = {
     {
       label: '操作',
       slot: 'action',
-      actionParams: { name: 'qydm', detailIdName: 'qydm' },
+      actionParams: { name: 'qydm' },
       width: 100,
       fixed: 'right' as const,
       align: 'center' as const,

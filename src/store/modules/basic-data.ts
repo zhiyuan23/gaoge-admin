@@ -15,7 +15,6 @@ const useBasicDataStore = defineStore(
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
     const dataTypeTips = ref<any>(DATA_TYPE_TIPS)
     const dataType = ref<DataTypeOption>(dataTypeOptions.value[0])
-    const detailTypeCode = ref<string>(dataType.value.code)
 
     // 查询条件
     const commonSearch = ref<string>('')
@@ -122,10 +121,19 @@ const useBasicDataStore = defineStore(
     }
 
     // 获取详情数据
-    async function fetchDetailData(params: any) {
-      const res = await apiBasicData.getDetailApi(detailTypeCode.value, params)
+    async function fetchDetailData(id: any) {
+      const params = {
+        [detailIdName.value]: id,
+      }
+      const res = await apiBasicData.getDetailApi(dataType.value.code, params)
       detailData.value = res.data[0]
     }
+
+    // 获取详情数据
+    // async function fetchDetaiByPzwhlData(params: any) {
+    //   const res = await apiBasicData.getDetailByPzwhApi(params)
+    //   detailData.value = res.data[0]
+    // }
 
     // 显示友情提示提示
     function showTips() {
@@ -164,7 +172,6 @@ const useBasicDataStore = defineStore(
       dataTypeOptions,
       dataTypeTips,
       dataType,
-      detailTypeCode,
       commonSearch,
       tablePage,
       tablePageSize,
@@ -178,6 +185,7 @@ const useBasicDataStore = defineStore(
       fetchTableColumns,
       fetchTableRecords,
       fetchDetailData,
+      // fetchDetaiByPzwhlData,
       setDataTypeByCode,
       updateQueryParams,
       initQueryConditions,
@@ -192,7 +200,6 @@ const useBasicDataStore = defineStore(
           'dataType',
           'dataTypeOptions',
           'detailIdName',
-          'detailTypeCode',
         ],
         storage: sessionStorage,
       },

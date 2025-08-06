@@ -9,10 +9,10 @@ import useBasicDataStore from '@/store/modules/basic-data'
 import { useRoute } from 'vue-router'
 
 const basicDataStore = useBasicDataStore()
-const { detailTypeCode, detailData } = storeToRefs(basicDataStore)
+const { detailData } = storeToRefs(basicDataStore)
 
-const isProducer = computed(() => detailTypeCode.value === 'syscqyinfo')
-const isApproval = computed(() => detailTypeCode.value === 'sycppzwh')
+const isProducer = computed(() => true)
+const isApproval = computed(() => false)
 
 function close() {
   window.close()
@@ -21,11 +21,7 @@ function close() {
 onMounted(() => {
   const route = useRoute()
   const id = route.params.id
-  const params = {
-    [basicDataStore.detailIdName]: id,
-  }
-
-  basicDataStore.fetchDetailData(params)
+  basicDataStore.fetchDetailData(id)
 })
 </script>
 
@@ -38,7 +34,7 @@ onMounted(() => {
         :title="detailData.qymc"
         direction="vertical"
         size="large"
-        border
+        :border="true"
         class="mt-5"
       >
         <ElDescriptionsItem label="生产许可证">
@@ -55,7 +51,7 @@ onMounted(() => {
       <ElDescriptions
         direction="vertical"
         size="large"
-        border
+        :border="true"
         class="mt-5"
       >
         <ElDescriptionsItem :label="detailData.gmpZsh">
@@ -77,7 +73,7 @@ onMounted(() => {
       :title="detailData.qymc"
       direction="vertical"
       size="large"
-      border
+      :border="true"
       class="mt-5"
     >
       <ElDescriptionsItem :label="detailData.pzwh">
