@@ -73,14 +73,18 @@ function toList(row: any, { name, code }: any) {
 
 // 查看详情
 function toDetail(row: any, { name, detailIdName, code = '' }: any) {
-  basicDataStore.apiPath = code || basicDataStore.dataType.code
+  basicDataStore.detailTypeCode = code || basicDataStore.dataType.code
   basicDataStore.detailIdName = detailIdName
+
+  const id = row[name]
+  if (!id) {
+    toast.warning('暂无可查看的详情')
+    return
+  }
 
   const url = router.resolve({
     name: 'basicDataDetail',
-    params: {
-      id: row[name],
-    },
+    params: { id },
   }).href
 
   setTimeout(() => {
@@ -92,7 +96,7 @@ function toDetail(row: any, { name, detailIdName, code = '' }: any) {
 function openPdf(row: any, name: string) {
   const fieldName = row[name]
   if (!fieldName) {
-    toast.warning('没有可查看的PDF文件！')
+    toast.warning('暂无可查看的PDF文件')
     return
   }
 

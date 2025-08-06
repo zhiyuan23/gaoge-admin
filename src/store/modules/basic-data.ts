@@ -15,7 +15,7 @@ const useBasicDataStore = defineStore(
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
     const dataTypeTips = ref<any>(DATA_TYPE_TIPS)
     const dataType = ref<DataTypeOption>(dataTypeOptions.value[0])
-    const apiPath = ref<string>(dataType.value.code)
+    const detailTypeCode = ref<string>(dataType.value.code)
 
     // 查询条件
     const commonSearch = ref<string>('')
@@ -123,7 +123,7 @@ const useBasicDataStore = defineStore(
 
     // 获取详情数据
     async function fetchDetailData(params: any) {
-      const res = await apiBasicData.getDetailApi(apiPath.value, params)
+      const res = await apiBasicData.getDetailApi(detailTypeCode.value, params)
       detailData.value = res.data[0]
     }
 
@@ -164,7 +164,7 @@ const useBasicDataStore = defineStore(
       dataTypeOptions,
       dataTypeTips,
       dataType,
-      apiPath,
+      detailTypeCode,
       commonSearch,
       tablePage,
       tablePageSize,
@@ -192,7 +192,7 @@ const useBasicDataStore = defineStore(
           'dataType',
           'dataTypeOptions',
           'detailIdName',
-          'apiPath',
+          'detailTypeCode',
         ],
         storage: sessionStorage,
       },
