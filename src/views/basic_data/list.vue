@@ -100,7 +100,6 @@ function openPdf(row: any, name: string) {
   }
 
   // 新标签页打开
-  // const baseUrl = 'http://vdts.ivdc.org.cn:8099/cxPDF'
   const baseUrl = getResourceUrl('pdf')
   const pdfUrl = `${baseUrl}${fieldName}`
   window.open(pdfUrl, '_blank')

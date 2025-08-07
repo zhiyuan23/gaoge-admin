@@ -12,8 +12,12 @@ interface ImportMetaEnv {
   /**
    * 服务端地址
    */
-  readonly VITE_APP_BASEURL: string
+  readonly VITE_APP_BASE_URL: string
   readonly VITE_APP_API_PREFIX: string
+  /**
+   * 静态资源地址
+   */
+  readonly VITE_APP_STATIC_RESOURCE_URL: string
   readonly VITE_APP_PDF_PREFIX: string
   readonly VITE_APP_IMAGE_PREFIX: string
   readonly VITE_APP_DOC_PREFIX: string
