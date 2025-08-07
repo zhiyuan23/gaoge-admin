@@ -9,19 +9,29 @@ import useBasicDataStore from '@/store/modules/basic-data'
 import { useRoute } from 'vue-router'
 
 const basicDataStore = useBasicDataStore()
-const { detailData } = storeToRefs(basicDataStore)
+const { detailData, detailIdName } = storeToRefs(basicDataStore)
 
-const isProducer = computed(() => true)
-const isApproval = computed(() => false)
+const isProducer = computed(() => detailIdName.value === 'qydm')
+const isApproval = computed(() => detailIdName.value === 'pzwhitemid')
+
+function getDetail() {
+  const route = useRoute()
+  const id = route.params.id
+
+  if (isProducer.value) {
+    basicDataStore.fetchDetailByQydm(id)
+  }
+  if (isApproval.value) {
+    basicDataStore.fetchDetailByPzwh(id)
+  }
+}
 
 function close() {
   window.close()
 }
 
 onMounted(() => {
-  const route = useRoute()
-  const id = route.params.id
-  basicDataStore.fetchDetailData(id)
+  getDetail()
 })
 </script>
 

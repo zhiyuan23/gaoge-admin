@@ -24,7 +24,7 @@ export default {
   }),
 
   // 获取详情
-  getDetailApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/detail`, data, {
+  getDetailByQydmApi: (data: object) => api.post(`${BASE_PATH}/syscqyinfo/detail`, data, {
     headers: {
       'Content-Type': 'application/x-www-form-urlencoded',
     },
@@ -33,13 +33,10 @@ export default {
   }),
 
   // 获取详情-通过批准文号查询
-  // getDetailByPzwhApi: (data: object) => api.post(`${BASE_PATH}/sycppzwh/findByPzwh`, data, {
-  //   headers: {
-  //     'Content-Type': 'application/x-www-form-urlencoded',
-  //   },
-  //   noAuth: true,
-  //   rawResponse: true,
-  // }),
+  getDetailByPzwhApi: (data: object) => api.get(`${BASE_PATH}/sycppzwh/detail`, {
+    params: data,
+    noAuth: true,
+  }),
 
   // 获取列表
   // getListApi: (path: string, data: object) => api.post('basic/list', data, {

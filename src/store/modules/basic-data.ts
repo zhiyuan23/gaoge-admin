@@ -121,19 +121,19 @@ const useBasicDataStore = defineStore(
     }
 
     // 获取详情数据
-    async function fetchDetailData(id: any) {
+    async function fetchDetailByQydm(id: any) {
       const params = {
-        [detailIdName.value]: id,
+        qydm: id,
       }
-      const res = await apiBasicData.getDetailApi(dataType.value.code, params)
+      const res = await apiBasicData.getDetailByQydmApi(params)
       detailData.value = res.data[0]
     }
 
     // 获取详情数据
-    // async function fetchDetaiByPzwhlData(params: any) {
-    //   const res = await apiBasicData.getDetailByPzwhApi(params)
-    //   detailData.value = res.data[0]
-    // }
+    async function fetchDetailByPzwh(id: any) {
+      const res = await apiBasicData.getDetailByPzwhApi({ id })
+      detailData.value = res.data
+    }
 
     // 显示友情提示提示
     function showTips() {
@@ -184,8 +184,8 @@ const useBasicDataStore = defineStore(
       fetchHelpDoc,
       fetchTableColumns,
       fetchTableRecords,
-      fetchDetailData,
-      // fetchDetaiByPzwhlData,
+      fetchDetailByQydm,
+      fetchDetailByPzwh,
       setDataTypeByCode,
       updateQueryParams,
       initQueryConditions,

@@ -74,8 +74,8 @@ function toList(row: any, { name, code }: any) {
 // 查看详情
 function toDetail(row: any, { name }: any) {
   basicDataStore.detailIdName = name
-
   const id = row[name]
+
   if (!id) {
     toast.warning('暂无可查看的详情')
     return
