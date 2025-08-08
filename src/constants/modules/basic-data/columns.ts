@@ -64,6 +64,7 @@ export const BASIC_DATA_COLUMNS = {
   hyjdcjjg: [
     { prop: 'nd', label: '年度', width: 70 },
     { prop: 'jd', label: '季度', width: 70 },
+    { prop: 'yf', label: '月份', width: 70 },
     {
       prop: 'cpwh',
       label: '批准文号',
@@ -79,11 +80,12 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'cpmc', label: '通用名称', width: 250 },
     { prop: 'spm', label: '商品名', width: 150 },
     { prop: 'yylb', label: '用药类别', width: 100 },
-    { prop: 'bcscqy', label: '标称生产企业' },
-    { prop: 'bcydwmc', label: '被抽样单位' },
+    { prop: 'bcscqy', label: '标称生产企业', width: 350 },
+    { prop: 'bcydwmc', label: '被抽样单位', width: 350 },
     { prop: 'ph', label: '生产批号', width: 120 },
+    { prop: 'bhgxm', label: '不符合规定项目', width: 250 },
     { prop: 'jydw', label: '检验机构', width: 100 },
-    { prop: 'bz', label: '备注', width: 100 },
+    { prop: 'bz', label: '备注', width: 300 },
   ],
   // 生药监督抽检结果数据
   syjdcjjg: [
@@ -106,10 +108,10 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'bcydwmc', label: '被抽样单位', width: 350 },
     { prop: 'ph', label: '生产批号', width: 120 },
     { prop: 'jyxm', label: '检验项目', width: 500 },
-    { prop: 'bhgxm', label: '不符合规定项目', width: 500 },
+    { prop: 'bhgxm', label: '不符合规定项目', width: 250 },
     { prop: 'jydw', label: '检验机构', width: 100 },
     { prop: 'jyyj', label: '检验依据', width: 400 },
-    { prop: 'bz', label: '备注', width: 150 },
+    { prop: 'bz', label: '备注', width: 300 },
   ],
   // 临床试验审批数据
   lcsysp: [

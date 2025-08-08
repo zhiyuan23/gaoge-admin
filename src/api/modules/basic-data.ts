@@ -37,15 +37,4 @@ export default {
     params: data,
     noAuth: true,
   }),
-
-  // 获取列表
-  // getListApi: (path: string, data: object) => api.post('basic/list', data, {
-  //   baseURL: '/mock/',
-  //   noAuth: true,
-  // }),
-
-  // 获取详情
-  // getDetailApi: () => api.get('basic/detail', {
-  //   baseURL: '/mock/',
-  // }),
 }

@@ -79,9 +79,48 @@ const useBasicDataStore = defineStore(
       updateQueryParams({ conditions: [] })
     }
 
+    // 获取查询条件值
+    function getQueryConditionsValue() {
+      const hylxPathMap: Record<string, string> = {
+        合格: '',
+        不合格: 'bhg',
+        假兽药: 'jsy',
+      }
+      const hylxCondition = conditionItems.value.find((item: any) => item.field === 'hylx')
+      const value = hylxCondition ? hylxPathMap[hylxCondition.value] ?? '' : ''
+
+      return value
+    }
+
     // 获取列配置
     async function fetchTableColumns() {
-      tableColumns.value = BASIC_DATA_COLUMNS[dataType.value.code as keyof typeof BASIC_DATA_COLUMNS]
+      const code = dataType.value.code as keyof typeof BASIC_DATA_COLUMNS
+      tableColumns.value = [...BASIC_DATA_COLUMNS[code]]
+
+      initTableColumns(code)
+    }
+
+    // 初始化表格列
+    async function initTableColumns(code: string) {
+      const hylxValue = getQueryConditionsValue()
+      const visibilityMap: Record<string, boolean> = {}
+
+      // 设置 不符合规定项目 可见性
+      if (code === 'hyjdcjjg' || code === 'syjdcjjg') {
+        visibilityMap.bhgxm = hylxValue === 'bhg'
+      }
+
+      // 设置 季度/月读 可见性
+      if (code === 'hyjdcjjg') {
+        visibilityMap.jd = hylxValue !== 'jsy'
+        visibilityMap.yf = hylxValue === 'jsy'
+      }
+
+      tableColumns.value.forEach((col) => {
+        if (col.prop! in visibilityMap) {
+          col.visible = visibilityMap[col.prop!]
+        }
+      })
     }
 
     // 获取表格数据
@@ -97,25 +136,28 @@ const useBasicDataStore = defineStore(
         })
       }
 
-      // 切换提示
-      showTips()
-
-      const existingConditions = conditionItems.value.filter(
-        (item: { field: string }) => item.field !== 'commonSearch',
-      )
-
-      conditionItems.value = [
+      // 合并过滤后的条件
+      const mergedConditions = [
         ...baseConditions,
-        ...existingConditions,
+        ...conditionItems.value.filter((item: any) => item.field !== 'commonSearch'),
       ]
 
+      // 获取子路径
+      const childPath = getQueryConditionsValue()
+
+      // 拼接请求参数
       const params = {
         page: tablePage.value,
         rows: tablePageSize.value,
-        conditionItems: conditionItems.value,
+        conditionItems: mergedConditions,
       }
-      const res = await apiBasicData.getListApi(dataType.value.code, params)
 
+      const path = dataType.value.code + childPath
+
+      // 更新提示（根据条件变更）
+      showTips()
+
+      const res = await apiBasicData.getListApi(path, params)
       tableRecords.value = res.data.rows
       totalRecords.value = res.data.total
     }

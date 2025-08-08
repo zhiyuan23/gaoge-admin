@@ -168,7 +168,12 @@ function emitPaginationChange() {
         </ElTableColumn>
 
         <!-- 普通列 -->
-        <ElTableColumn v-else v-bind="col" show-overflow-tooltip color="text-primary">
+        <ElTableColumn
+          v-else-if="(col.visible ?? true)"
+          v-bind="col"
+          show-overflow-tooltip
+          color="text-primary"
+        >
           <template #default="{ row }">
             <template v-if="typeof col.link === 'function'">
               <ElLink type="primary" :href="col.link(row)" target="_blank">
@@ -180,9 +185,6 @@ function emitPaginationChange() {
                 {{ row[col.prop!] }}
               </ElLink>
             </template>
-            <!-- <template v-else>
-              {{ row[col.prop!] }}
-            </template> -->
           </template>
         </ElTableColumn>
       </template>

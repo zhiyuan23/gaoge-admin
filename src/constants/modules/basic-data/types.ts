@@ -9,6 +9,7 @@ export interface TableColumn {
   actionParams?: any
   fixed?: 'left' | 'right' | boolean
   align?: 'left' | 'center' | 'right'
+  visible?: boolean
 }
 
 export interface DataTypeOption {

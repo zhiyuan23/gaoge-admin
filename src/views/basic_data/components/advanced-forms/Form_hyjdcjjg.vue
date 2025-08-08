@@ -11,14 +11,28 @@ const formData = reactive({
   hylx: '合格',
   nd: '',
   jd: '',
+  yf: '',
   cpwh: '',
   bcscqy: '',
 })
+
+watch(
+  () => formData.hylx,
+  (newVal) => {
+    if (newVal === '假兽药') {
+      formData.jd = ''
+    }
+    else {
+      formData.yf = ''
+    }
+  },
+)
 
 function resetForm() {
   formData.hylx = '合格'
   formData.nd = ''
   formData.jd = ''
+  formData.yf = ''
   formData.cpwh = ''
   formData.bcscqy = ''
 }
@@ -27,6 +41,7 @@ const { convertToConditions } = useConditionConverter(formData, {
   hylx: { operator: 'EQUAL', ignoreEmpty: true },
   nd: { operator: 'EQUAL', ignoreEmpty: true },
   jd: { operator: 'EQUAL', ignoreEmpty: true },
+  yf: { operator: 'EQUAL', ignoreEmpty: true },
 })
 
 function getQueryConditions() {
@@ -65,17 +80,39 @@ defineExpose({
       />
     </el-form-item>
 
-    <el-form-item label="季度">
+    <el-form-item v-if="formData.hylx !== '假兽药'" label="季度">
       <el-select
         v-model="formData.jd"
         value-key="label"
         clearable
-        placeholder="请选择结果类型"
+        placeholder="请选择季度"
       >
         <el-option label="第一季度" value="1" />
         <el-option label="第二季度" value="2" />
         <el-option label="第三季度" value="3" />
         <el-option label="第四季度" value="4" />
+      </el-select>
+    </el-form-item>
+
+    <el-form-item v-if="formData.hylx === '假兽药'" label="月份">
+      <el-select
+        v-model="formData.yf"
+        value-key="label"
+        clearable
+        placeholder="请选择月份"
+      >
+        <el-option label="一月" value="1" />
+        <el-option label="二月" value="2" />
+        <el-option label="三月" value="3" />
+        <el-option label="四月" value="4" />
+        <el-option label="五月" value="5" />
+        <el-option label="六月" value="6" />
+        <el-option label="七月" value="7" />
+        <el-option label="八月" value="8" />
+        <el-option label="九月" value="9" />
+        <el-option label="十月" value="10" />
+        <el-option label="十一月" value="11" />
+        <el-option label="十二月" value="12" />
       </el-select>
     </el-form-item>
 
