@@ -16,6 +16,7 @@ import MultilevelMenuExample from './modules/example/multilevel.menu.example'
 import PermissionExample from './modules/example/permission.example'
 import PluginExample from './modules/example/plugin.example'
 import TabExample from './modules/example/tab.example'
+import Gaoge from './modules/Gaoge'
 
 // 固定路由（默认路由）
 const constantRoutes: RouteRecordRaw[] = [
@@ -90,6 +91,15 @@ const asyncRoutes: Route.recordMainRaw[] = [
   },
   ...(import.meta.env.VITE_APP_SETTING
     ? [
+        {
+          meta: {
+            title: '高歌',
+            icon: 'solar:cup-star-outline',
+          },
+          children: [
+            Gaoge,
+          ],
+        },
         {
           meta: {
             title: '演示',
