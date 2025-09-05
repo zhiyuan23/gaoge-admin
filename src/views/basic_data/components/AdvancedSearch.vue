@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import useBasicDataStore from '@/store/modules/basic-data'
+import { toast } from 'vue-sonner'
 
 const props = defineProps({
   modelValue: {
@@ -38,15 +39,21 @@ const show = computed({
 
 // 确认搜索
 function handleConfirm() {
+  const queryConditions = formRef.value.getQueryConditions()
+
+  if (queryConditions.length === 0) {
+    toast.warning('请输入搜索内容查询')
+    return
+  }
+
   basicDataStore.commonSearch = ''
-  emit('confirm', formRef.value.getQueryConditions())
+  emit('confirm', queryConditions)
   emit('update:modelValue', false)
 }
 
 // 清空搜索
 function handleReset() {
   emit('reset')
-  // emit('update:modelValue', false)
   formRef.value.resetForm()
 }
 

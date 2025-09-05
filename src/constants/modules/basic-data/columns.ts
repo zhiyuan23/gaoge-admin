@@ -65,6 +65,7 @@ export const BASIC_DATA_COLUMNS = {
     { prop: 'nd', label: '年度', width: 70 },
     { prop: 'jd', label: '季度', width: 70 },
     { prop: 'yf', label: '月份', width: 70 },
+    { prop: 'cjps', label: '抽检批次', width: 100 },
     {
       prop: 'cpwh',
       label: '批准文号',

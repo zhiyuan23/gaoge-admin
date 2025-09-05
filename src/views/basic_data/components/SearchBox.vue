@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import useBasicDataStore from '@/store/modules/basic-data'
-// import { useFaModal } from '@/ui/components/FaModal'
-
 import { Search } from '@element-plus/icons-vue'
 import { Icon } from '@iconify/vue'
 import { toast } from 'vue-sonner'

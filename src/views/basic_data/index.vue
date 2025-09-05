@@ -19,6 +19,8 @@ const props = defineProps({
   },
 })
 
+const { loadTips, tips } = useDataTypeTips()
+
 const router = useRouter()
 const basicDataStore = useBasicDataStore()
 
@@ -48,8 +50,11 @@ async function downHelpDoc() {
   basicDataStore.fetchHelpDoc()
 }
 
-onMounted(() => {
+onMounted(async () => {
   basicDataStore.fetchHelpList()
+
+  await loadTips()
+  basicDataStore.dataTypeTips = tips.value
 })
 </script>
 

@@ -9,7 +9,7 @@ import useBasicDataStore from '@/store/modules/basic-data'
 import { useRoute } from 'vue-router'
 
 const basicDataStore = useBasicDataStore()
-const { detailData, detailIdName } = storeToRefs(basicDataStore)
+const { detailData, detailListData, detailIdName } = storeToRefs(basicDataStore)
 
 const isProducer = computed(() => detailIdName.value === 'qydm')
 const isApproval = computed(() => detailIdName.value === 'pzwhitemid')
@@ -41,7 +41,7 @@ onMounted(() => {
     <!-- 生产企业数据详情 -->
     <template v-if="isProducer">
       <ElDescriptions
-        :title="detailData.qymc"
+        :title="detailListData[0]?.qymc"
         direction="vertical"
         size="large"
         :border="true"
@@ -49,29 +49,31 @@ onMounted(() => {
       >
         <ElDescriptionsItem label="生产许可证">
           <div class="detail-list">
-            <div>企业名称：{{ detailData.qymc }}</div>
-            <div>许可证号：{{ detailData.xkzh }}</div>
-            <div>生产范围：{{ detailData.scfw }}</div>
-            <div>生产地址：{{ detailData.scdz }}</div>
-            <div>发证日期：{{ detailData.fzrq }}</div>
-            <div>有效期至：{{ detailData.yxqz }}</div>
+            <div>企业名称：{{ detailListData[0]?.qymc }}</div>
+            <div>许可证号：{{ detailListData[0]?.xkzh }}</div>
+            <div>生产范围：{{ detailListData[0]?.scfw }}</div>
+            <div>生产地址：{{ detailListData[0]?.scdz }}</div>
+            <div>发证日期：{{ detailListData[0]?.fzrq }}</div>
+            <div>有效期至：{{ detailListData[0]?.yxqz }}</div>
           </div>
         </ElDescriptionsItem>
       </ElDescriptions>
       <ElDescriptions
+        v-for="item in detailListData"
+        :key="item.gmpZsh"
         direction="vertical"
         size="large"
         :border="true"
         class="mt-5"
       >
-        <ElDescriptionsItem :label="detailData.gmpZsh">
+        <ElDescriptionsItem :label="item.gmpZsh">
           <div class="detail-list">
-            <div>企业名称：{{ detailData.gmpQymc }}</div>
-            <div>生产地址：{{ detailData.gmpScdz }}</div>
-            <div>GMP证书号：{{ detailData.gmpZsh }}</div>
-            <div>生产范围：{{ detailData.gmpYsfw }}</div>
-            <div>发证日期：{{ detailData.gmpGgrq }}</div>
-            <div>失效日期：{{ detailData.gmpSxrq }}</div>
+            <div>企业名称：{{ item.gmpQymc }}</div>
+            <div>生产地址：{{ item.gmpScdz }}</div>
+            <div>GMP证书号：{{ item.gmpZsh }}</div>
+            <div>生产范围：{{ item.gmpYsfw }}</div>
+            <div>发证日期：{{ item.gmpGgrq }}</div>
+            <div>失效日期：{{ item.gmpSxrq }}</div>
           </div>
         </ElDescriptionsItem>
       </ElDescriptions>

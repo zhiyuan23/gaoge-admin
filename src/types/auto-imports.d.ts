@@ -70,6 +70,7 @@ declare global {
   const useConditionConverter: typeof import('../utils/composables/useConditionConverter')['useConditionConverter']
   const useCssModule: typeof import('vue')['useCssModule']
   const useCssVars: typeof import('vue')['useCssVars']
+  const useDataTypeTips: typeof import('../utils/composables/useDataTypeTips')['useDataTypeTips']
   const useGlobalProperties: typeof import('../utils/composables/useGlobalProperties')['default']
   const useId: typeof import('vue')['useId']
   const useLink: typeof import('vue-router')['useLink']

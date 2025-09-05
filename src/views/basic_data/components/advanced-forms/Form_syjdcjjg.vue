@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useConditionConverter } from '@/utils/composables/useConditionConverter'
 
-function disabledDate(time: { getFullYear: () => any }) {
+function disabledDate(time: Date) {
   const currentYear = new Date().getFullYear()
   const year = time.getFullYear()
   return year > currentYear || year < currentYear - 5
@@ -15,12 +15,15 @@ const formData = reactive({
   bcscqy: '',
 })
 
+// 重置表单
 function resetForm() {
-  formData.hylx = '合格'
-  formData.nd = ''
-  formData.jd = ''
-  formData.cpwh = ''
-  formData.bcscqy = ''
+  Object.assign(formData, {
+    hylx: '合格',
+    nd: '',
+    jd: '',
+    cpwh: '',
+    bcscqy: '',
+  })
 }
 
 const { convertToConditions } = useConditionConverter(formData, {
@@ -38,16 +41,20 @@ defineExpose({
   resetForm,
   getQueryConditions,
 })
+
+// 季度选项
+const quarterOptions = [
+  { label: '第一季度', value: '1' },
+  { label: '第二季度', value: '2' },
+  { label: '第三季度', value: '3' },
+  { label: '第四季度', value: '4' },
+]
 </script>
 
 <template>
   <el-form :model="formData" size="large" label-width="100px">
     <el-form-item label="结果类型">
-      <el-select
-        v-model="formData.hylx"
-        value-key="label"
-        placeholder="请选择结果类型"
-      >
+      <el-select v-model="formData.hylx" placeholder="请选择结果类型">
         <el-option label="合格" value="合格" />
         <el-option label="不合格" value="不合格" />
       </el-select>
@@ -65,33 +72,17 @@ defineExpose({
     </el-form-item>
 
     <el-form-item label="季度">
-      <el-select
-        v-model="formData.jd"
-        value-key="label"
-        clearable
-        placeholder="请选择结果类型"
-      >
-        <el-option label="第一季度" value="1" />
-        <el-option label="第二季度" value="2" />
-        <el-option label="第三季度" value="3" />
-        <el-option label="第四季度" value="4" />
+      <el-select v-model="formData.jd" clearable placeholder="请选择季度">
+        <el-option v-for="q in quarterOptions" :key="q.value" :label="q.label" :value="q.value" />
       </el-select>
     </el-form-item>
 
     <el-form-item label="批准文号">
-      <el-input
-        v-model="formData.cpwh"
-        clearable
-        placeholder="请输入批准文号"
-      />
+      <el-input v-model="formData.cpwh" clearable placeholder="请输入批准文号" />
     </el-form-item>
 
     <el-form-item label="标称生产企业">
-      <el-input
-        v-model="formData.bcscqy"
-        clearable
-        placeholder="请输入标称生产企业"
-      />
+      <el-input v-model="formData.bcscqy" clearable placeholder="请输入标称生产企业" />
     </el-form-item>
   </el-form>
 </template>

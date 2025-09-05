@@ -93,15 +93,16 @@ function toDetail(row: any, { name }: any) {
 
 // 查看PDF
 function openPdf(row: any, name: string) {
-  const fieldName = row[name]
-  if (!fieldName) {
+  const fileName = row[name]
+  if (!fileName) {
     toast.warning('暂无可查看的PDF文件')
     return
   }
 
   // 新标签页打开
   const baseUrl = getResourceUrl('pdf')
-  const pdfUrl = `${baseUrl}${fieldName}`
+  const encodedFileName = encodeURIComponent(fileName)
+  const pdfUrl = `${baseUrl}/${encodedFileName}`
   window.open(pdfUrl, '_blank')
 }
 

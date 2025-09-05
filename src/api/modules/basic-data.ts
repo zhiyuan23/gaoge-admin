@@ -17,6 +17,12 @@ export default {
     })
   },
 
+  // 获取tips信息
+  getTipsList: (data: any) => api.post(`${BASE_PATH}/sysSjkfwll/list`, data, {
+    noAuth: true,
+    rawResponse: true,
+  }),
+
   // 获取列表
   getListApi: (path: string, data: object) => api.post(`${BASE_PATH}/${path}/list`, data, {
     noAuth: true,

@@ -81,6 +81,7 @@ function resetForm() {
 
 const { convertToConditions } = useConditionConverter(formData, {
   provinceName: { operator: 'EQUAL', ignoreEmpty: true },
+  poultryType: { operator: 'EQUAL', ignoreEmpty: true },
 })
 
 function getQueryConditions() {

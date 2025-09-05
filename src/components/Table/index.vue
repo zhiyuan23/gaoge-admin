@@ -175,16 +175,13 @@ function emitPaginationChange() {
           color="text-primary"
         >
           <template #default="{ row }">
-            <template v-if="typeof col.link === 'function'">
-              <ElLink type="primary" :href="col.link(row)" target="_blank">
-                {{ row[col.prop!] }}
-              </ElLink>
-            </template>
-            <template v-else-if="col.link === true">
-              <ElLink type="primary" @click="() => emit('linkClick', { row, prop: col.prop, linkParams: col.linkParams })">
-                {{ row[col.prop!] }}
-              </ElLink>
-            </template>
+            <ElLink
+              v-if="col.link && row[col.linkParams.name]"
+              type="primary"
+              @click="() => emit('linkClick', { row, prop: col.prop, linkParams: col.linkParams })"
+            >
+              {{ row[col.prop!] }}
+            </ElLink>
           </template>
         </ElTableColumn>
       </template>

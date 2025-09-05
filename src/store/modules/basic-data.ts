@@ -1,6 +1,7 @@
 import type { DataTypeOption, TableColumn } from '@/constants/modules/basic-data'
 import apiBasicData from '@/api/modules/basic-data'
-import { BASIC_DATA_COLUMNS, DATA_TYPE_OPTIONS, DATA_TYPE_TIPS } from '@/constants/modules/basic-data'
+import { BASIC_DATA_COLUMNS, DATA_TYPE_OPTIONS } from '@/constants/modules/basic-data'
+
 import { ElNotification } from 'element-plus'
 
 const useBasicDataStore = defineStore(
@@ -9,11 +10,11 @@ const useBasicDataStore = defineStore(
   () => {
     // 弹窗实例
     let notificationInstance: ReturnType<typeof ElNotification> | null = null
-    let lastTipMessage: string | null = null
+    let lastTipTitle: string | null = null
 
     // 数据类型
     const dataTypeOptions = ref<DataTypeOption[]>(DATA_TYPE_OPTIONS)
-    const dataTypeTips = ref<any>(DATA_TYPE_TIPS)
+    const dataTypeTips = ref<any>({})
     const dataType = ref<DataTypeOption>(dataTypeOptions.value[0])
 
     // 查询条件
@@ -29,6 +30,7 @@ const useBasicDataStore = defineStore(
 
     // 详情数据
     const detailData = ref<any>({})
+    const detailListData = ref<any>([])
     const detailIdName = ref<string>('id')
 
     // 帮助信息
@@ -116,6 +118,11 @@ const useBasicDataStore = defineStore(
         visibilityMap.yf = hylxValue === 'jsy'
       }
 
+      // 设置 抽检批次 可见性
+      if (code === 'hyjdcjjg') {
+        visibilityMap.cjps = hylxValue === 'jsy'
+      }
+
       tableColumns.value.forEach((col) => {
         if (col.prop! in visibilityMap) {
           col.visible = visibilityMap[col.prop!]
@@ -133,6 +140,16 @@ const useBasicDataStore = defineStore(
           type: 'STRING',
           operator: 'LIKE',
           value: commonSearch.value,
+        })
+      }
+
+      // 经营企业只查询启用状态
+      if (dataType.value.code === 'distributor') {
+        baseConditions.push({
+          field: 'enable',
+          type: 'STRING',
+          operator: 'EQUAL',
+          value: '1',
         })
       }
 
@@ -162,16 +179,16 @@ const useBasicDataStore = defineStore(
       totalRecords.value = res.data.total
     }
 
-    // 获取详情数据
+    // 获取详情数据-通过企业代码
     async function fetchDetailByQydm(id: any) {
       const params = {
         qydm: id,
       }
       const res = await apiBasicData.getDetailByQydmApi(params)
-      detailData.value = res.data[0]
+      detailListData.value = res.data
     }
 
-    // 获取详情数据
+    // 获取详情数据-通过批准文号
     async function fetchDetailByPzwh(id: any) {
       const res = await apiBasicData.getDetailByPzwhApi({ id })
       detailData.value = res.data
@@ -180,7 +197,9 @@ const useBasicDataStore = defineStore(
     // 显示友情提示提示
     function showTips() {
       const message = dataTypeTips.value[dataType.value.code]
-      if (message === lastTipMessage) {
+      const title = `${dataType.value.label}库友情提示`
+
+      if (title === lastTipTitle) {
         return
       }
 
@@ -190,10 +209,10 @@ const useBasicDataStore = defineStore(
         return
       }
 
-      lastTipMessage = message
+      lastTipTitle = title
 
       notificationInstance = ElNotification({
-        title: `${dataType.value.label}库友情提示`,
+        title,
         dangerouslyUseHTMLString: true,
         message,
         duration: 0,
@@ -221,6 +240,7 @@ const useBasicDataStore = defineStore(
       tableRecords,
       totalRecords,
       detailData,
+      detailListData,
       detailIdName,
       fetchHelpList,
       fetchHelpDoc,

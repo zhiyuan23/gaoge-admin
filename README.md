@@ -118,11 +118,3 @@ pnpm new
 - `plop-templates/`：plop 模板目录
 
 ---
-
-<!-- ## 📄 License
-
-[MIT](LICENSE)
-
----
-
-> ✨ 欢迎提出 Issue / PR，让这个项目变得更好！ -->

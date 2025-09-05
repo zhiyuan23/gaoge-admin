@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { useConditionConverter } from '@/utils/composables/useConditionConverter'
 
-function disabledDate(time: { getFullYear: () => any }) {
+function disabledDate(time: Date) {
   const currentYear = new Date().getFullYear()
   const year = time.getFullYear()
   return year > currentYear || year < currentYear - 5
@@ -12,6 +12,7 @@ const formData = reactive({
   nd: '',
   jd: '',
   yf: '',
+  cjps: '',
   cpwh: '',
   bcscqy: '',
 })
@@ -19,22 +20,22 @@ const formData = reactive({
 watch(
   () => formData.hylx,
   (newVal) => {
-    if (newVal === '假兽药') {
-      formData.jd = ''
-    }
-    else {
-      formData.yf = ''
-    }
+    formData.jd = newVal === '假兽药' ? '' : formData.jd
+    formData.yf = newVal !== '假兽药' ? '' : formData.yf
   },
 )
 
+// 重置表单
 function resetForm() {
-  formData.hylx = '合格'
-  formData.nd = ''
-  formData.jd = ''
-  formData.yf = ''
-  formData.cpwh = ''
-  formData.bcscqy = ''
+  Object.assign(formData, {
+    hylx: '合格',
+    nd: '',
+    jd: '',
+    yf: '',
+    cjps: '',
+    cpwh: '',
+    bcscqy: '',
+  })
 }
 
 const { convertToConditions } = useConditionConverter(formData, {
@@ -53,16 +54,35 @@ defineExpose({
   resetForm,
   getQueryConditions,
 })
+
+// 下拉选项
+const quarterOptions = [
+  { label: '第一季度', value: '1' },
+  { label: '第二季度', value: '2' },
+  { label: '第三季度', value: '3' },
+  { label: '第四季度', value: '4' },
+]
+
+const monthOptions = [
+  { label: '一月', value: '1' },
+  { label: '二月', value: '2' },
+  { label: '三月', value: '3' },
+  { label: '四月', value: '4' },
+  { label: '五月', value: '5' },
+  { label: '六月', value: '6' },
+  { label: '七月', value: '7' },
+  { label: '八月', value: '8' },
+  { label: '九月', value: '9' },
+  { label: '十月', value: '10' },
+  { label: '十一月', value: '11' },
+  { label: '十二月', value: '12' },
+]
 </script>
 
 <template>
   <el-form :model="formData" size="large" label-width="100px">
     <el-form-item label="结果类型">
-      <el-select
-        v-model="formData.hylx"
-        value-key="label"
-        placeholder="请选择结果类型"
-      >
+      <el-select v-model="formData.hylx" placeholder="请选择结果类型">
         <el-option label="合格" value="合格" />
         <el-option label="不合格" value="不合格" />
         <el-option label="假兽药" value="假兽药" />
@@ -81,55 +101,27 @@ defineExpose({
     </el-form-item>
 
     <el-form-item v-if="formData.hylx !== '假兽药'" label="季度">
-      <el-select
-        v-model="formData.jd"
-        value-key="label"
-        clearable
-        placeholder="请选择季度"
-      >
-        <el-option label="第一季度" value="1" />
-        <el-option label="第二季度" value="2" />
-        <el-option label="第三季度" value="3" />
-        <el-option label="第四季度" value="4" />
+      <el-select v-model="formData.jd" clearable placeholder="请选择季度">
+        <el-option v-for="q in quarterOptions" :key="q.value" :label="q.label" :value="q.value" />
       </el-select>
     </el-form-item>
 
     <el-form-item v-if="formData.hylx === '假兽药'" label="月份">
-      <el-select
-        v-model="formData.yf"
-        value-key="label"
-        clearable
-        placeholder="请选择月份"
-      >
-        <el-option label="一月" value="1" />
-        <el-option label="二月" value="2" />
-        <el-option label="三月" value="3" />
-        <el-option label="四月" value="4" />
-        <el-option label="五月" value="5" />
-        <el-option label="六月" value="6" />
-        <el-option label="七月" value="7" />
-        <el-option label="八月" value="8" />
-        <el-option label="九月" value="9" />
-        <el-option label="十月" value="10" />
-        <el-option label="十一月" value="11" />
-        <el-option label="十二月" value="12" />
+      <el-select v-model="formData.yf" clearable placeholder="请选择月份">
+        <el-option v-for="m in monthOptions" :key="m.value" :label="m.label" :value="m.value" />
       </el-select>
     </el-form-item>
 
-    <el-form-item label="批准文号">
-      <el-input
-        v-model="formData.cpwh"
-        clearable
-        placeholder="请输入批准文号"
-      />
+    <el-form-item v-if="formData.hylx === '假兽药'" label="抽检批次">
+      <el-input v-model="formData.cjps" clearable placeholder="请输入抽检批次" />
     </el-form-item>
 
-    <el-form-item label="标称生产企业">
-      <el-input
-        v-model="formData.bcscqy"
-        clearable
-        placeholder="请输入标称生产企业"
-      />
+    <el-form-item v-if="formData.hylx !== '假兽药'" label="批准文号">
+      <el-input v-model="formData.cpwh" clearable placeholder="请输入批准文号" />
+    </el-form-item>
+
+    <el-form-item v-if="formData.hylx !== '假兽药'" label="标称生产企业">
+      <el-input v-model="formData.bcscqy" clearable placeholder="请输入标称生产企业" />
     </el-form-item>
   </el-form>
 </template>
