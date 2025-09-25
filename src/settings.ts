@@ -12,7 +12,7 @@ const globalSettings: Settings.all = {
     enableMobileAdaptation: true,
   },
   menu: {
-    mode: 'single',
+    mode: 'head',
     enableSubMenuCollapseButton: true,
     enableHotkeys: true,
   },
@@ -35,7 +35,7 @@ const globalSettings: Settings.all = {
   copyright: {
     enable: true,
     dates: '',
-    company: '中国兽医药品监察所',
+    company: '高歌数字',
     website: '',
   },
 }

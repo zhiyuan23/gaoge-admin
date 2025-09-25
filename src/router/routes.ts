@@ -16,13 +16,13 @@ import MultilevelMenuExample from './modules/example/multilevel.menu.example'
 import PermissionExample from './modules/example/permission.example'
 import PluginExample from './modules/example/plugin.example'
 import TabExample from './modules/example/tab.example'
-import Gaoge from './modules/Gaoge'
+import Gaoge from './modules/gaoge'
 
 // 固定路由（默认路由）
 const constantRoutes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: () => import('@/views/basic_data/index.vue'),
+    component: () => import('@/layouts/index.vue'),
     meta: {
       title: '首页',
     },
@@ -82,6 +82,44 @@ const systemRoutes: RouteRecordRaw[] = [
 const asyncRoutes: Route.recordMainRaw[] = [
   {
     meta: {
+      title: '高歌',
+      icon: 'solar:cup-star-outline',
+    },
+    children: [
+      Gaoge,
+    ],
+  },
+  {
+    meta: {
+      title: '高歌FC',
+      icon: 'ion:football',
+    },
+    children: [
+      Gaoge,
+    ],
+  },
+  {
+    meta: {
+      title: '演示',
+      icon: 'i-uim:box',
+    },
+    children: [
+      MultilevelMenuExample,
+      BreadcrumbExample,
+      KeepAliveExample,
+      TabExample,
+      ComponentExample,
+      IconExample,
+      FeatureExample,
+      PluginExample,
+      PermissionExample,
+      MockExample,
+      JsxExample,
+      ExternalLinkExample,
+    ],
+  },
+  {
+    meta: {
       title: '国家兽药',
       icon: 'i-ci:main-component',
     },
@@ -89,39 +127,6 @@ const asyncRoutes: Route.recordMainRaw[] = [
       BasicData,
     ],
   },
-  ...(import.meta.env.VITE_APP_SETTING
-    ? [
-        {
-          meta: {
-            title: '高歌',
-            icon: 'solar:cup-star-outline',
-          },
-          children: [
-            Gaoge,
-          ],
-        },
-        {
-          meta: {
-            title: '演示',
-            icon: 'i-uim:box',
-          },
-          children: [
-            MultilevelMenuExample,
-            BreadcrumbExample,
-            KeepAliveExample,
-            TabExample,
-            ComponentExample,
-            IconExample,
-            FeatureExample,
-            PluginExample,
-            PermissionExample,
-            MockExample,
-            JsxExample,
-            ExternalLinkExample,
-          ],
-        },
-      ]
-    : []),
 ]
 
 const constantRoutesByFilesystem = generatedRoutes.filter((item) => {

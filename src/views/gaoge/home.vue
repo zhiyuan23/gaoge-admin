@@ -1,4 +1,9 @@
-<!-- <script setup lang="ts">
+<route lang="yaml">
+meta:
+  title: 高歌
+</route>
+
+<script setup lang="ts">
 import * as THREE from 'three'
 import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls.js'
 import { onMounted, onUnmounted, ref } from 'vue'
@@ -105,9 +110,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div ref="canvasContainer" style="width: 100%; height: 100vh;" />
+  <div>
+    <div ref="canvasContainer" style="width: 100%; height: 100vh;" />
+  </div>
 </template>
 
 <style scoped>
 /* 可以添加一些样式 */
-</style> -->
+</style>

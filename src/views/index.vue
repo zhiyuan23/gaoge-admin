@@ -5,11 +5,10 @@ meta:
 </route>
 
 <script setup lang="ts">
-import Home from './basic_data/index.vue'
 </script>
 
 <template>
   <FaPageMain>
-    <Home :show-footer="false" />
+    首页1
   </FaPageMain>
 </template>
