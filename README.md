@@ -32,7 +32,7 @@
 
 ## 📁 项目结构（核心）
 
-<!-- ```plaintext -->
+```plaintext
 高歌体育
 ├─ src/                    # 核心源码
 │  ├─ api/                 # 接口封装
@@ -55,6 +55,7 @@
 ├─ tsconfig*.json          # TypeScript 配置
 ├─ .env.*                  # 不同环境变量
 └─ README.md
+```
 
 ---
 
@@ -66,6 +67,7 @@
 
 ```bash
 pnpm install
+```
 
 ### 本地开发
 
@@ -78,7 +80,8 @@ pnpm dev
 ### 打包构建
 
 ```bash
-pnpm build
+pnpm build      # 正式环境
+pnpm build:uat  # uat环境
 ```
 
 ---
