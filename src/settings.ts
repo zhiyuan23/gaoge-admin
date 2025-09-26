@@ -5,7 +5,7 @@ import { cloneDeep } from 'es-toolkit'
 
 const globalSettings: Settings.all = {
   app: {
-    enablePermission: false,
+    enablePermission: true,
     enableDynamicTitle: true,
   },
   layout: {

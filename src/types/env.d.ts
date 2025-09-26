@@ -32,13 +32,21 @@ interface ImportMetaEnv {
   readonly VITE_BUILD_ARCHIVE: string
   /**
    * ========================
-   * UAT 环境配置
+   * 开发环境配置
    * ========================
    */
   readonly VITE_APP_SETTING: boolean
   /**
-   * 服务端地址（UAT）
+   * 服务端地址（开发用）
    */
   readonly VITE_APP_BASE_URL: string
   readonly VITE_APP_STATIC_RESOURCE_URL: string
+  /**
+   * 是否开启代理
+   */
+  readonly VITE_OPEN_PROXY: boolean
+  /**
+   * 是否开启开发者工具
+   */
+  readonly VITE_OPEN_DEVTOOLS: boolean
 }
