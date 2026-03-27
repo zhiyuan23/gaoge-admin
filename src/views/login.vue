@@ -6,9 +6,9 @@ meta:
 </route>
 
 <script setup lang="ts">
-import LoginForm from '@/components/AccountForm/LoginForm.vue'
-import RegisterForm from '@/components/AccountForm/RegisterForm.vue'
-import ResetPasswordForm from '@/components/AccountForm/ResetPasswordForm.vue'
+import LoginForm from '@/components/business/AccountForm/LoginForm.vue'
+import RegisterForm from '@/components/business/AccountForm/RegisterForm.vue'
+import ResetPasswordForm from '@/components/business/AccountForm/ResetPasswordForm.vue'
 import Copyright from '@/layouts/components/Copyright/index.vue'
 import ColorScheme from '@/layouts/components/Topbar/Toolbar/ColorScheme/index.vue'
 import useSettingsStore from '@/store/modules/settings'
