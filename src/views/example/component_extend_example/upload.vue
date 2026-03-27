@@ -101,25 +101,53 @@ const tableData = [
       </template>
     </FaPageHeader>
     <FaPageMain title="单图上传">
-      <ImageUpload v-model="image" action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image" name="image" :width="250" :height="150" @on-success="handleSuccess1" />
+      <ImageUpload
+        v-model="image"
+        action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image"
+        name="image"
+        :width="250"
+        :height="150"
+        @on-success="handleSuccess1"
+      />
     </FaPageMain>
     <FaPageMain title="多图上传（默认最多3张）">
-      <ImagesUpload v-model="images" action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image" name="image" @on-success="handleSuccess2" />
+      <ImagesUpload
+        v-model="images"
+        action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image"
+        name="image"
+        @on-success="handleSuccess2"
+      />
     </FaPageMain>
     <FaPageMain title="文件上传（默认最多3个）">
-      <FileUpload :files="files" action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/file" @on-success="handleSuccess3" />
+      <FileUpload
+        :files="files"
+        action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/file"
+        @on-success="handleSuccess3"
+      />
     </FaPageMain>
     <FaPageMain title="结合 el-table 使用">
       <ElTable :data="tableData" style="width: 100%;">
         <ElTableColumn type="index" width="50" fixed="left" />
         <ElTableColumn label="单张图片">
           <template #default="{ row }">
-            <ImageUpload v-model:url="row.image" action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image" name="image" :width="250" :height="150" @on-success="handleSuccess1" />
+            <ImageUpload
+              v-model:url="row.image"
+              action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image"
+              name="image"
+              :width="250"
+              :height="150"
+              @on-success="handleSuccess1"
+            />
           </template>
         </ElTableColumn>
         <ElTableColumn label="多张图片">
           <template #default="{ row }">
-            <ImagesUpload v-model:url="row.images" action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image" name="image" @on-success="handleSuccess2" />
+            <ImagesUpload
+              v-model:url="row.images"
+              action="https://console-mock.apipost.cn/app/mock/project/1f50f1da-5189-4282-d3c7-c133a514c5a8/upload/image"
+              name="image"
+              @on-success="handleSuccess2"
+            />
           </template>
         </ElTableColumn>
       </ElTable>

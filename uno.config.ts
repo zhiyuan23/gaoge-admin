@@ -127,7 +127,9 @@ export default defineConfig<Theme>({
       },
     }),
     presetTypography(),
-    presetScrollbar(),
+    presetScrollbar({
+      noCompatible: false,
+    }),
     presetLegacyCompat({
       legacyColorSpace: true,
     }) as PresetOrFactory<Theme>,

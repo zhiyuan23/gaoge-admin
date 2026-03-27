@@ -3,7 +3,6 @@ import type { RouteRecordRaw } from 'vue-router'
 import useSettingsStore from '@/store/modules/settings'
 import generatedRoutes from 'virtual:generated-pages'
 import { setupLayouts } from 'virtual:meta-layouts'
-import BasicData from './modules/basic.data'
 import BreadcrumbExample from './modules/example/breadcrumb.example'
 import ComponentExample from './modules/example/component.example'
 import ExternalLinkExample from './modules/example/external.link.example'
@@ -82,17 +81,8 @@ const systemRoutes: RouteRecordRaw[] = [
 const asyncRoutes: Route.recordMainRaw[] = [
   {
     meta: {
-      title: '高歌',
+      title: '高歌体育',
       icon: 'solar:cup-star-outline',
-    },
-    children: [
-      Gaoge,
-    ],
-  },
-  {
-    meta: {
-      title: '高歌FC',
-      icon: 'ion:football',
     },
     children: [
       Gaoge,
@@ -116,15 +106,6 @@ const asyncRoutes: Route.recordMainRaw[] = [
       MockExample,
       JsxExample,
       ExternalLinkExample,
-    ],
-  },
-  {
-    meta: {
-      title: '国家兽药',
-      icon: 'i-ci:main-component',
-    },
-    children: [
-      BasicData,
     ],
   },
 ]

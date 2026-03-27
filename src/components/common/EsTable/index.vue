@@ -1,9 +1,8 @@
 <script setup lang="ts">
 import type { TableColumn } from '@/constants/modules/basic-data/types.ts'
 import type { PropType } from 'vue'
+import type { EsTableEmits, TableSize } from './types'
 import { computed, ref, watch } from 'vue'
-
-type TableSize = '' | 'large' | 'default' | 'small'
 
 defineOptions({
   name: 'EsTable',
@@ -90,7 +89,7 @@ const props = defineProps({
   },
 })
 
-const emit = defineEmits(['update:page', 'update:pageSize', 'paginationChange', 'linkClick'])
+const emit = defineEmits<EsTableEmits>()
 
 // 当前页码
 const currentPage = ref(props.page)
@@ -144,7 +143,7 @@ function emitPaginationChange() {
 </script>
 
 <template>
-  <div class="h-full flex-col">
+  <div class="flex-col" :class="showPagination ? 'h-[calc(100%-45px)]' : 'h-full'">
     <!-- 表格区域 -->
     <ElTable
       v-loading="loading"

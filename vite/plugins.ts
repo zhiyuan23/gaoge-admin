@@ -51,7 +51,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       ],
       dts: './src/types/auto-imports.d.ts',
       dirs: [
-        './src/utils/composables/**',
+        './src/composables/**',
       ],
     }),
 
@@ -60,6 +60,7 @@ export default function createVitePlugins(mode: string, isBuild = false) {
       globs: [
         'src/ui/components/*/index.vue',
         'src/components/*/index.vue',
+        'src/components/*/*/index.vue',
       ],
       dts: './src/types/components.d.ts',
     }),
@@ -95,10 +96,12 @@ export default function createVitePlugins(mode: string, isBuild = false) {
     }),
 
     // https://github.com/nonzzz/vite-plugin-compression
-    viteEnv.VITE_BUILD_COMPRESS?.split(',').includes('gzip') && compression(),
+    viteEnv.VITE_BUILD_COMPRESS?.split(',').includes('gzip') && compression({
+      algorithms: ['gzip'],
+    }),
     viteEnv.VITE_BUILD_COMPRESS?.split(',').includes('brotli') && compression({
       exclude: [/\.(br)$/, /\.(gz)$/],
-      algorithm: 'brotliCompress',
+      algorithms: ['brotliCompress'],
     }),
 
     viteEnv.VITE_BUILD_ARCHIVE && Archiver({

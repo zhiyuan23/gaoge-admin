@@ -48,6 +48,7 @@ export default defineConfig(({ mode, command }) => {
     },
     plugins: createVitePlugins(mode, command === 'build'),
     resolve: {
+      tsconfigPaths: true,
       alias: {
         '@': path.resolve(__dirname, 'src'),
         '#': path.resolve(__dirname, 'src/types'),

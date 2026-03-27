@@ -33,7 +33,7 @@ const globalSettings: Settings.all = {
     enableHotkeys: true,
   },
   copyright: {
-    enable: true,
+    enable: false,
     dates: '',
     company: '高歌数字',
     website: '',

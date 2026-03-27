@@ -58,12 +58,14 @@ export const lightTheme = {
   '--g-sub-sidebar-menu-active-bg': 'hsl(var(--primary))',
   '--g-sub-sidebar-menu-active-color': 'hsl(var(--primary-foreground))',
   // 标签栏
-  '--g-tabbar-bg': 'var(--g-main-area-bg)',
+  // '--g-tabbar-bg': 'var(--g-main-area-bg)',
+  '--g-tabbar-bg': 'hsl(var(--background))',
   '--g-tabbar-dividers-bg': 'hsl(var(--accent-foreground) / 50%)',
   '--g-tabbar-tab-color': 'hsl(var(--accent-foreground) / 50%)',
   '--g-tabbar-tab-hover-bg': 'hsl(var(--border))',
   '--g-tabbar-tab-hover-color': 'hsl(var(--accent-foreground) / 50%)',
-  '--g-tabbar-tab-active-bg': 'hsl(var(--background))',
+  // '--g-tabbar-tab-active-bg': 'hsl(var(--background))',
+  '--g-tabbar-tab-active-bg': 'hsl(var(--border))',
   '--g-tabbar-tab-active-color': 'hsl(var(--foreground))',
   // 工具栏
   '--g-toolbar-bg': 'hsl(var(--background))',

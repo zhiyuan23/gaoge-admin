@@ -39,7 +39,7 @@ const globalSettingsDefault: RecursiveRequired<Settings.all> = {
     enableHotkeys: false,
   },
   toolbar: {
-    breadcrumb: true,
+    breadcrumb: false,
     navSearch: true,
     fullscreen: false,
     pageReload: false,

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import EditPasswordForm from '@/components/AccountForm/EditPasswordForm.vue'
+import EditPasswordForm from '@/components/business/AccountForm/EditPasswordForm.vue'
 
 const active = ref(0)
 const tabs = ref([

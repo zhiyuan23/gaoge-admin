@@ -1,4 +1,4 @@
-# 📦 高歌体育
+# 📦 高歌数字
 
 基于 **Vue 3 + TypeScript + UnoCSS + Pinia** 构建的现代化后台管理系统。
 
@@ -33,7 +33,7 @@
 ## 📁 项目结构（核心）
 
 ```plaintext
-高歌体育
+高歌数字
 ├─ src/                    # 核心源码
 │  ├─ api/                 # 接口封装
 │  ├─ assets/              # 静态资源（图片/图标/样式）
@@ -98,12 +98,14 @@ pnpm format    # prettier 格式化
 ## 🧰 自动化模板生成
 
 内置 [plop.js](https://plopjs.com/) 可快速生成：
+
 - 页面
 - 组件
 - mock 文件
 - store 模块
 
 使用命令：
+
 ```bash
 pnpm new
 ```
