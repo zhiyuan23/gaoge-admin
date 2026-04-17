@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import useUserStore from '@/store/modules/user'
-import { FormControl, FormField, FormItem, FormMessage } from '@/ui/shadcn/ui/form'
 import { toTypedSchema } from '@vee-validate/zod'
 import { useForm } from 'vee-validate'
 import * as z from 'zod'
+import useUserStore from '@/store/modules/user'
+import { FormControl, FormField, FormItem, FormMessage } from '@/ui/shadcn/ui/form'
 
 defineOptions({
   name: 'LoginForm',
@@ -41,7 +41,10 @@ const form = useForm({
 })
 const onSubmit = form.handleSubmit((values) => {
   loading.value = true
-  userStore.login(values).then(() => {
+  userStore.login({
+    account: values.account,
+    password: values.password,
+  }).then(() => {
     if (values.remember) {
       localStorage.setItem('login_account', values.account)
     }
@@ -132,9 +135,6 @@ function testAccount(account: string) {
         <div class="space-x-2">
           <FaButton variant="default" size="sm" plain @click="testAccount('admin')">
             admin
-          </FaButton>
-          <FaButton variant="outline" size="sm" plain @click="testAccount('test')">
-            test
           </FaButton>
         </div>
       </div>

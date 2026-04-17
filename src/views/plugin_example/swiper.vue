@@ -14,9 +14,9 @@ import Alert from './components/alert.vue'
 import Command from './components/command.vue'
 // Import Swiper styles
 import 'swiper/css'
-import 'swiper/css/navigation'
-import 'swiper/css/pagination'
-import 'swiper/css/scrollbar'
+import 'swiper/modules/navigation/css'
+import 'swiper/modules/pagination/css'
+import 'swiper/modules/scrollbar/css'
 
 const modules = [Navigation, Pagination, Scrollbar, A11y]
 

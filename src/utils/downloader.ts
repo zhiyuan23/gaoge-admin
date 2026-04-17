@@ -1,6 +1,6 @@
 import type { AxiosRequestConfig } from 'axios'
-import api from '@/api/index'
 import { saveAs } from 'file-saver'
+import api from '@/api/index'
 
 /**
  * 安全解码RFC2047编码的文件名
@@ -45,7 +45,7 @@ export async function downloadFile(url: string, defaultFilename: string, config?
   const response = await api.get(url, {
     ...config,
     responseType: 'blob',
-    rawResponse: true,
+    raw: true,
   })
 
   // 解析文件名

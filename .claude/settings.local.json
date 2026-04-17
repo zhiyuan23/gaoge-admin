@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git -C /Users/snow/Documents/Gaoge/gaoge-server fetch origin)",
+      "Bash(git -C /Users/snow/Documents/Gaoge/gaoge-server log --oneline origin/main..main)",
+      "Bash(git -C /Users/snow/Documents/Gaoge/gaoge-server add src/modules/auth/controllers/auth.controller.ts)",
+      "Bash(git -C /Users/snow/Documents/Gaoge/gaoge-server commit -m \"fix: remove type import for dtos to enable class-validator metadata\")",
+      "Bash(git:*)",
+      "Bash(pnpm outdated:*)",
+      "Bash(pnpm update:*)",
+      "Bash(pnpm lint:tsc:*)",
+      "Bash(pnpm remove:*)",
+      "Bash(pnpm dev:*)",
+      "Bash(jq)"
+    ]
+  }
+}

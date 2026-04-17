@@ -1,10 +1,10 @@
 import type { Router, RouteRecordRaw } from 'vue-router'
+import { useNProgress } from '@vueuse/integrations/useNProgress'
 import useKeepAliveStore from '@/store/modules/keepAlive'
 import useMenuStore from '@/store/modules/menu'
 import useRouteStore from '@/store/modules/route'
 import useSettingsStore from '@/store/modules/settings'
 import useUserStore from '@/store/modules/user'
-import { useNProgress } from '@vueuse/integrations/useNProgress'
 import { asyncRoutes, asyncRoutesByFilesystem } from './routes'
 import '@/assets/styles/nprogress.css'
 
@@ -58,7 +58,7 @@ function setupRoutes(router: Router) {
               await routeStore.generateRoutesAtBack()
               break
             case 'filesystem':
-              routeStore.generateRoutesAtFilesystem(asyncRoutesByFilesystem)
+              routeStore.generateRoutesAtFilesystem([...asyncRoutesByFilesystem])
               // 文件系统生成的路由，需要手动生成导航数据
               switch (settingsStore.settings.menu.baseOn) {
                 case 'frontend':

@@ -50,3 +50,5 @@ interface ImportMetaEnv {
    */
   readonly VITE_OPEN_PROXY: boolean
 }
+
+declare module 'virtual:svg-icons-register'

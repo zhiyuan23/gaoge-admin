@@ -1,12 +1,12 @@
+import VxeUI from 'vxe-pc-ui'
+
+import VxeUITable from 'vxe-table'
 // 加载 iconify 图标
 import { downloadAndInstall } from '@/iconify'
 
 import icons from '@/iconify/index.json'
 // 自定义指令
 import directive from '@/utils/directive'
-
-import VxeUI from 'vxe-pc-ui'
-import VxeUITable from 'vxe-table'
 import App from './App.vue'
 
 import router from './router'
@@ -36,5 +36,23 @@ if (icons.isOfflineUse) {
     downloadAndInstall(info)
   }
 }
+
+// 全局错误处理，忽略接口请求未捕获的错误（拦截器已经处理过提示）
+app.config.errorHandler = (err: any) => {
+  // 忽略axios接口错误，已经在拦截器里弹过提示了
+  if (err?.isAxiosError || err?.code !== undefined) {
+    return
+  }
+  // 其他错误正常打印
+  console.error('全局错误：', err)
+}
+
+// 全局捕获未处理的Promise错误，消除控制台警告
+window.addEventListener('unhandledrejection', (e) => {
+  // 忽略axios接口错误
+  if (e.reason?.isAxiosError || e.reason?.code !== undefined) {
+    e.preventDefault()
+  }
+})
 
 app.mount('#app')

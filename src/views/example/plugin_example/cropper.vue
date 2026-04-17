@@ -18,7 +18,7 @@ onMounted(() => {
     return
   }
   cropper = new Cropper(imageRef.value, {
-    aspectRatio: 1,
+    aspect: 1,
     viewMode: 1,
     dragMode: 'move',
   })

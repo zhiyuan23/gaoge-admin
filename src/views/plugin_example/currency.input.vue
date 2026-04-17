@@ -99,7 +99,7 @@ const options = computed(() => {
   }
 })
 
-const { inputRef, setValue, setOptions, numberValue, formattedValue } = useCurrencyInput(options.value as CurrencyInputOptions)
+const { setValue, setOptions, numberValue, formattedValue } = useCurrencyInput(options.value as CurrencyInputOptions)
 
 watch(options, (value) => {
   setOptions(value as CurrencyInputOptions)
@@ -163,7 +163,7 @@ function open(url: string) {
     </FaPageHeader>
     <FaPageMain>
       <div class="grid items-center gap-y-4 md-grid-cols-2 md-gap-x-8">
-        <ElInput ref="inputRef" v-model="formattedValue" />
+        <ElInput v-model="formattedValue" />
         <div>
           数值：<code class="ml-2">{{ numberValue != null ? numberValue : 'null' }}</code>
         </div>

@@ -47,7 +47,6 @@ onMounted(() => {
       <component :is="Component" v-if="isAuth" />
       <FaNotAllowed v-else />
     </RouterView>
-    <FaToast />
     <FaNotification />
     <FaSystemInfo />
   </Provider>
